@@ -8,7 +8,7 @@
 
   <style>
     /* =====================================================
-       CONFIGURACIÓN GENERAL
+       CONFIGURACIÓN GENERAL & FONDO CLARO (ESTILO NUBES)
     ===================================================== */
     * {
       box-sizing: border-box;
@@ -17,16 +17,13 @@
     }
 
     :root {
-      --azul: #087cff;
+      --azul-principal: #0077ff;
       --azul-claro: #00d9ff;
-      --azul-oscuro: #063b9e;
-      --azul-profundo: #020b2e;
+      --azul-oscuro: #0a2540;
       --blanco: #ffffff;
-      --negro: #0f172a;
+      --negro: #1e293b;
       --gris: #64748b;
       --gris-claro: #e2e8f0;
-      --verde: #16a34a;
-      --rojo: #dc2626;
     }
 
     html {
@@ -35,7 +32,7 @@
 
     body {
       min-height: 100vh;
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: var(--negro);
       display: flex;
       justify-content: center;
@@ -43,16 +40,13 @@
       padding: 30px 15px;
       overflow-x: hidden;
       
-      /* =================================================
-         FONDO ESTILO NUBES DEL LOGO (CSS PURO)
-      ================================================= */
+      /* Fondo claro con tonos pastel y degradado inspirado en el logo */
       background:
-        radial-gradient(circle at 20% 20%, rgba(255, 182, 193, 0.6) 0%, transparent 40%),
-        radial-gradient(circle at 80% 30%, rgba(173, 216, 230, 0.7) 0%, transparent 45%),
-        radial-gradient(circle at 50% 80%, rgba(221, 160, 221, 0.6) 0%, transparent 50%),
-        radial-gradient(circle at 90% 90%, rgba(135, 206, 235, 0.5) 0%, transparent 40%),
-        radial-gradient(circle at 10% 70%, rgba(255, 228, 181, 0.5) 0%, transparent 45%),
-        linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #1a252f 100%);
+        radial-gradient(circle at 15% 20%, rgba(255, 192, 203, 0.45) 0%, transparent 40%),
+        radial-gradient(circle at 85% 25%, rgba(135, 206, 250, 0.5) 0%, transparent 45%),
+        radial-gradient(circle at 50% 80%, rgba(221, 160, 221, 0.4) 0%, transparent 50%),
+        radial-gradient(circle at 90% 85%, rgba(175, 238, 238, 0.45) 0%, transparent 40%),
+        linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 50%, #bcccdc 100%);
       background-size: 400% 400%;
       animation: movimientoFondo 20s ease infinite;
       background-attachment: fixed;
@@ -65,50 +59,28 @@
     }
 
     /* =====================================================
-       LUCES DEL FONDO
-    ===================================================== */
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background: radial-gradient(ellipse at center, transparent 20%, rgba(0, 0, 40, .40) 100%);
-      z-index: 0;
-    }
-
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background: linear-gradient(115deg, transparent 32%, rgba(0, 230, 255, .10) 46%, transparent 58%),
-                  linear-gradient(65deg, transparent 35%, rgba(100, 60, 255, .14) 50%, transparent 65%);
-      z-index: 0;
-    }
-
-    /* =====================================================
-       TARJETA
+       TARJETA PRINCIPAL (EFECTO CRISTAL CLARO)
     ===================================================== */
     .card {
       position: relative;
       z-index: 2;
       width: 100%;
       max-width: 540px;
-      background: rgba(255, 255, 255, .97);
-      border: 2px solid rgba(255, 255, 255, .85);
+      background: rgba(255, 255, 255, 0.95);
+      border: 2px solid rgba(255, 255, 255, 0.9);
       border-radius: 28px;
       padding: 30px;
-      box-shadow: 0 30px 80px rgba(0, 0, 0, .45), 0 0 40px rgba(0, 200, 255, .35);
-      animation: aparecer .6s ease;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1), 0 0 30px rgba(0, 119, 255, 0.15);
+      animation: aparecer 0.6s ease;
     }
 
     @keyframes aparecer {
-      from { opacity: 0; transform: translateY(30px) scale(.96); }
+      from { opacity: 0; transform: translateY(30px) scale(0.96); }
       to { opacity: 1; transform: translateY(0) scale(1); }
     }
 
     /* =====================================================
-       APARTADO EXCLUSIVO DEL LOGO
+       APARTADO DEL LOGO
     ===================================================== */
     .logo-section {
       width: 100%;
@@ -124,8 +96,8 @@
       width: 100%;
       text-align: center;
       margin-bottom: 8px;
-      color: #64748b;
-      font-size: 9px;
+      color: var(--gris);
+      font-size: 10px;
       font-weight: 800;
       letter-spacing: 2px;
       text-transform: uppercase;
@@ -146,8 +118,8 @@
       height: auto;
       display: block;
       object-fit: contain;
-      filter: drop-shadow(0 8px 10px rgba(0, 0, 0, .35)) drop-shadow(0 0 20px rgba(0, 170, 255, .35));
-      transition: transform .3s ease;
+      filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.15));
+      transition: transform 0.3s ease;
     }
 
     .logo:hover {
@@ -155,7 +127,7 @@
     }
 
     /* =====================================================
-       TITULO
+       TITULOS
     ===================================================== */
     .titulo {
       text-align: center;
@@ -173,8 +145,12 @@
       margin-bottom: 25px;
     }
 
+    .subtitulo strong {
+      color: var(--azul-principal);
+    }
+
     /* =====================================================
-       CAMPOS
+       CAMPOS DEL FORMULARIO
     ===================================================== */
     .campo {
       margin-bottom: 16px;
@@ -198,13 +174,13 @@
       font-family: inherit;
       font-size: 14px;
       outline: none;
-      transition: .2s ease;
+      transition: 0.2s ease;
     }
 
     input:focus, textarea:focus {
       background: #ffffff;
-      border-color: var(--azul);
-      box-shadow: 0 0 0 4px rgba(37, 99, 235, .12);
+      border-color: var(--azul-principal);
+      box-shadow: 0 0 0 4px rgba(0, 119, 255, 0.12);
     }
 
     input::placeholder, textarea::placeholder {
@@ -212,13 +188,10 @@
     }
 
     textarea {
-      min-height: 130px;
+      min-height: 120px;
       resize: vertical;
     }
 
-    /* =====================================================
-       CONTADOR DEL MOTIVO
-    ===================================================== */
     .contador {
       text-align: right;
       margin-top: 4px;
@@ -235,20 +208,20 @@
       margin-top: 5px;
       border: none;
       border-radius: 14px;
-      background: linear-gradient(135deg, #006eff, #00bfff, #0755d8);
+      background: linear-gradient(135deg, #0077ff, #00bfff);
       color: white;
       font-family: inherit;
       font-size: 14px;
       font-weight: 900;
-      letter-spacing: .5px;
+      letter-spacing: 0.5px;
       cursor: pointer;
-      box-shadow: 0 9px 22px rgba(0, 100, 255, .30);
-      transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease;
+      box-shadow: 0 8px 20px rgba(0, 119, 255, 0.25);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
     }
 
     .btn-primary:hover:not(:disabled) {
       transform: translateY(-2px);
-      box-shadow: 0 13px 30px rgba(0, 100, 255, .40);
+      box-shadow: 0 12px 25px rgba(0, 119, 255, 0.35);
     }
 
     .btn-primary:active:not(:disabled) {
@@ -256,12 +229,12 @@
     }
 
     .btn-primary:disabled {
-      opacity: .65;
+      opacity: 0.65;
       cursor: not-allowed;
     }
 
     /* =====================================================
-       MENSAJES
+       MENSAJES DE ALERTA
     ===================================================== */
     .mensaje {
       display: none;
@@ -278,13 +251,6 @@
       background: #fee2e2;
       color: #991b1b;
       border: 1px solid #fecaca;
-    }
-
-    .mensaje.exito {
-      display: block;
-      background: #dcfce7;
-      color: #166534;
-      border: 1px solid #bbf7d0;
     }
 
     /* =====================================================
@@ -310,7 +276,7 @@
       color: white;
       font-size: 40px;
       font-weight: 900;
-      box-shadow: 0 10px 25px rgba(22, 163, 74, .30);
+      box-shadow: 0 10px 25px rgba(22, 163, 74, 0.3);
     }
 
     .exito h2 {
@@ -327,15 +293,15 @@
     }
 
     /* =====================================================
-       FOLIO
+       CAJA DE FOLIO
     ===================================================== */
     .folio-result-box {
       margin: 22px 0;
       padding: 22px;
-      background: linear-gradient(135deg, #eff6ff, #dbeafe);
-      border: 2px dashed var(--azul);
+      background: linear-gradient(135deg, #f0f7ff, #e0f2fe);
+      border: 2px dashed var(--azul-principal);
       border-radius: 18px;
-      box-shadow: 0 8px 20px rgba(37, 99, 235, .10);
+      box-shadow: 0 8px 20px rgba(0, 119, 255, 0.08);
     }
 
     .folio-label {
@@ -347,37 +313,35 @@
 
     .folio-code {
       margin-top: 8px;
-      color: #1e40af;
-      font-size: 30px;
+      color: #0369a1;
+      font-size: 28px;
       font-weight: 900;
       letter-spacing: 1px;
       word-break: break-word;
     }
 
     /* =====================================================
-       BOTÓN CONSULTA
+       BOTONES SECUNDARIOS EN ÉXITO
     ===================================================== */
     .btn-consulta {
       display: block;
       width: 100%;
       padding: 14px;
       border-radius: 13px;
-      background: #0f172a;
+      background: var(--azul-oscuro);
       color: white;
       text-decoration: none;
       font-size: 13px;
       font-weight: 800;
-      transition: .2s ease;
+      transition: 0.2s ease;
+      box-shadow: 0 4px 12px rgba(10, 37, 64, 0.2);
     }
 
     .btn-consulta:hover {
-      background: #1e293b;
+      background: #11355c;
       transform: translateY(-1px);
     }
 
-    /* =====================================================
-       BOTÓN NUEVO REGISTRO
-    ===================================================== */
     .btn-nuevo {
       width: 100%;
       padding: 12px;
@@ -390,16 +354,13 @@
       font-size: 12px;
       font-weight: 800;
       cursor: pointer;
-      transition: .2s ease;
+      transition: 0.2s ease;
     }
 
     .btn-nuevo:hover {
       background: #f8fafc;
     }
 
-    /* =====================================================
-       PIE DE PÁGINA
-    ===================================================== */
     .footer {
       margin-top: 20px;
       text-align: center;
@@ -421,16 +382,13 @@
         border-radius: 22px;
       }
       .logo {
-        max-width: 340px;
+        max-width: 320px;
       }
       .titulo {
         font-size: 21px;
       }
-      .subtitulo {
-        font-size: 12px;
-      }
       .folio-code {
-        font-size: 24px;
+        font-size: 22px;
       }
     }
   </style>
@@ -438,14 +396,9 @@
 
 <body>
 
-  <!-- =====================================================
-       TARJETA PRINCIPAL
-  ====================================================== -->
   <main class="card">
 
-    <!-- ===================================================
-         🖼️ APARTADO DEL LOGO
-    ==================================================== -->
+    <!-- APARTADO DEL LOGO -->
     <div class="logo-section">
       <div class="logo-title">
         LA CASA DE LOS FAMOSOS ROBLOX
@@ -455,9 +408,7 @@
       </div>
     </div>
 
-    <!-- ===================================================
-         FORMULARIO
-    ==================================================== -->
+    <!-- FORMULARIO -->
     <section id="formContainer">
 
       <h1 class="titulo">
@@ -465,63 +416,39 @@
       </h1>
 
       <p class="subtitulo">
-        ¿Tienes lo necesario para entrar a
-        <strong>
-          La Casa de los Famosos Roblox
-        </strong>?
-        Completa tu solicitud para participar.
+        ¿Tienes lo necesario para entrar a <strong>La Casa de los Famosos Roblox</strong>? Completa tu solicitud para participar.
       </p>
 
-      <!-- MENSAJE -->
       <div id="mensaje" class="mensaje"></div>
 
-      <!-- FORMULARIO -->
       <form id="postulacionForm">
 
-        <!-- ROBLOX -->
         <div class="campo">
-          <label for="roblox">
-            🎮 USUARIO DE ROBLOX
-          </label>
+          <label for="roblox">🎮 USUARIO DE ROBLOX</label>
           <input type="text" id="roblox" maxlength="30" autocomplete="off" required placeholder="Ej. RobloxPlayer123">
         </div>
 
-        <!-- DISCORD -->
         <div class="campo">
-          <label for="discord">
-            💬 USUARIO DE DISCORD
-          </label>
+          <label for="discord">💬 USUARIO DE DISCORD</label>
           <input type="text" id="discord" maxlength="40" autocomplete="off" required placeholder="Ej. usuario123">
         </div>
 
-        <!-- EDAD -->
         <div class="campo">
-          <label for="edad">
-            🎂 EDAD
-          </label>
+          <label for="edad">🎂 EDAD</label>
           <input type="number" id="edad" min="13" max="99" required placeholder="Ej. 16">
         </div>
 
-        <!-- PAÍS -->
         <div class="campo">
-          <label for="pais">
-            🌎 PAÍS
-          </label>
+          <label for="pais">🌎 PAÍS</label>
           <input type="text" id="pais" maxlength="40" required placeholder="Ej. México">
         </div>
 
-        <!-- MOTIVO -->
         <div class="campo">
-          <label for="motivo">
-            ⭐ ¿POR QUÉ DEBERÍAS ENTRAR?
-          </label>
+          <label for="motivo">⭐ ¿POR QUÉ DEBERÍAS ENTRAR?</label>
           <textarea id="motivo" maxlength="500" required placeholder="Cuéntanos por qué quieres formar parte de la casa..."></textarea>
-          <div class="contador" id="contador">
-            0 / 500
-          </div>
+          <div class="contador" id="contador">0 / 500</div>
         </div>
 
-        <!-- BOTÓN -->
         <button type="submit" class="btn-primary" id="btnSubmit">
           ENVIAR POSTULACIÓN
         </button>
@@ -534,46 +461,30 @@
 
     </section>
 
-    <!-- ===================================================
-         PANTALLA DE ÉXITO
-    ==================================================== -->
+    <!-- PANTALLA DE ÉXITO -->
     <section id="exitoRegistro" class="hidden exito">
 
-      <div class="check">
-        ✓
-      </div>
+      <div class="check">✓</div>
 
-      <h2>
-        ¡Postulación Enviada!
-      </h2>
+      <h2>¡Postulación Enviada!</h2>
 
       <p class="exito-texto">
-        Tu solicitud fue enviada correctamente.
-        Se te asignó un folio único de seguimiento.
+        Tu solicitud fue enviada correctamente. Se te asignó un folio único de seguimiento.
       </p>
 
-      <!-- FOLIO -->
       <div class="folio-result-box">
-        <div class="folio-label">
-          TU FOLIO DE POSTULACIÓN
-        </div>
-        <div id="folioGenerado" class="folio-code">
-          LCDF-00000000
-        </div>
+        <div class="folio-label">TU FOLIO DE POSTULACIÓN</div>
+        <div id="folioGenerado" class="folio-code">LCDF-00000000</div>
       </div>
 
       <p class="exito-texto">
-        Guarda este folio.
-        Lo necesitarás para consultar el estado
-        de tu postulación.
+        Guarda este folio. Lo necesitarás para consultar el estado de tu postulación.
       </p>
 
-      <!-- CONSULTAR -->
       <a href="consulta.html" class="btn-consulta">
         🔎 CONSULTAR ESTADO
       </a>
 
-      <!-- NUEVA POSTULACIÓN -->
       <button type="button" class="btn-nuevo" id="btnNuevo">
         HACER OTRA POSTULACIÓN
       </button>
@@ -582,11 +493,9 @@
 
   </main>
 
-  <!-- =====================================================
-       JAVASCRIPT
-  ===================================================== -->
+  <!-- JAVASCRIPT -->
   <script>
-    const APPS_SCRIPT_URL = "";
+    const APPS_SCRIPT_URL = ""; // Pega aquí tu URL de Google Apps Script
 
     const form = document.getElementById("postulacionForm");
     const btnSubmit = document.getElementById("btnSubmit");
@@ -698,10 +607,7 @@
         formContainer.classList.add("hidden");
         exitoRegistro.classList.remove("hidden");
 
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth"
-        });
+        window.scrollTo({ top: 0, behavior: "smooth" });
       } catch (error) {
         console.error("Error:", error);
         mostrarError("No se pudo enviar la postulación. Intenta nuevamente.");
@@ -718,10 +624,7 @@
       formContainer.classList.remove("hidden");
       btnSubmit.disabled = false;
       btnSubmit.textContent = "ENVIANDO POSTULACIÓN...";
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
+      window.scrollTo({ top: 0, behavior: "smooth" });
     });
   </script>
 
