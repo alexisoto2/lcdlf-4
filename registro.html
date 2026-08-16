@@ -1,632 +1,422 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Registro de La Casa de los Famosos Roblox">
-  <title>La Casa de los Famosos Roblox | Registro</title>
+<script>
 
-  <style>
-    /* =====================================================
-       CONFIGURACIÓN GENERAL & FONDO CLARO (ESTILO NUBES)
-    ===================================================== */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+const APPS_SCRIPT_URL =
+  "https://script.google.com/macros/s/AKfycbyzo1clYek057TW8mjUc1psZRnqOqRmjgAYDpi5ADFv8P-rFiethF_MmoRrxkoReMacrA/exec";
+
+
+const form =
+  document.getElementById("postulacionForm");
+
+const btnSubmit =
+  document.getElementById("btnSubmit");
+
+const mensaje =
+  document.getElementById("mensaje");
+
+const formContainer =
+  document.getElementById("formContainer");
+
+const exitoRegistro =
+  document.getElementById("exitoRegistro");
+
+const folioGenerado =
+  document.getElementById("folioGenerado");
+
+const btnNuevo =
+  document.getElementById("btnNuevo");
+
+const motivo =
+  document.getElementById("motivo");
+
+const contador =
+  document.getElementById("contador");
+
+
+/* ==========================================
+   CONTADOR
+========================================== */
+
+motivo.addEventListener(
+  "input",
+  function () {
+
+    contador.textContent =
+      `${motivo.value.length} / 500`;
+
+  }
+);
+
+
+/* ==========================================
+   MENSAJE DE ERROR
+========================================== */
+
+function mostrarError(texto) {
+
+  mensaje.textContent =
+    texto;
+
+  mensaje.className =
+    "mensaje error";
+
+}
+
+
+function limpiarMensaje() {
+
+  mensaje.textContent =
+    "";
+
+  mensaje.className =
+    "mensaje";
+
+}
+
+
+/* ==========================================
+   VALIDAR FORMULARIO
+========================================== */
+
+function validarFormulario() {
+
+  const roblox =
+    document
+      .getElementById("roblox")
+      .value
+      .trim();
+
+  const discord =
+    document
+      .getElementById("discord")
+      .value
+      .trim();
+
+  const edad =
+    Number(
+      document
+        .getElementById("edad")
+        .value
+    );
+
+  const pais =
+    document
+      .getElementById("pais")
+      .value
+      .trim();
+
+  const textoMotivo =
+    motivo.value.trim();
+
+
+  if (!roblox) {
+
+    mostrarError(
+      "Escribe tu usuario de Roblox."
+    );
+
+    return false;
+
+  }
+
+
+  if (!discord) {
+
+    mostrarError(
+      "Escribe tu usuario de Discord."
+    );
+
+    return false;
+
+  }
+
+
+  if (
+    !edad ||
+    edad < 13 ||
+    edad > 99
+  ) {
+
+    mostrarError(
+      "La edad debe estar entre 13 y 99 años."
+    );
+
+    return false;
+
+  }
+
+
+  if (!pais) {
+
+    mostrarError(
+      "Escribe tu país."
+    );
+
+    return false;
+
+  }
+
+
+  if (
+    textoMotivo.length < 15
+  ) {
+
+    mostrarError(
+      "Escribe al menos 15 caracteres explicando por qué deberías entrar."
+    );
+
+    return false;
+
+  }
+
+
+  return true;
+
+}
+
+
+/* ==========================================
+   ENVIAR POSTULACIÓN
+========================================== */
+
+form.addEventListener(
+  "submit",
+  async function (e) {
+
+    e.preventDefault();
+
+    limpiarMensaje();
+
+
+    if (
+      !validarFormulario()
+    ) {
+
+      return;
+
     }
 
-    :root {
-      --azul-principal: #0077ff;
-      --azul-claro: #00d9ff;
-      --azul-oscuro: #0a2540;
-      --blanco: #ffffff;
-      --negro: #1e293b;
-      --gris: #64748b;
-      --gris-claro: #e2e8f0;
-    }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    btnSubmit.disabled =
+      true;
 
-    body {
-      min-height: 100vh;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: var(--negro);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 30px 15px;
-      overflow-x: hidden;
-      
-      /* Fondo claro con tonos pastel y degradado inspirado en el logo */
-      background:
-        radial-gradient(circle at 15% 20%, rgba(255, 192, 203, 0.45) 0%, transparent 40%),
-        radial-gradient(circle at 85% 25%, rgba(135, 206, 250, 0.5) 0%, transparent 45%),
-        radial-gradient(circle at 50% 80%, rgba(221, 160, 221, 0.4) 0%, transparent 50%),
-        radial-gradient(circle at 90% 85%, rgba(175, 238, 238, 0.45) 0%, transparent 40%),
-        linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 50%, #bcccdc 100%);
-      background-size: 400% 400%;
-      animation: movimientoFondo 20s ease infinite;
-      background-attachment: fixed;
-    }
+    btnSubmit.textContent =
+      "ENVIANDO POSTULACIÓN...";
 
-    @keyframes movimientoFondo {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
 
-    /* =====================================================
-       TARJETA PRINCIPAL (EFECTO CRISTAL CLARO)
-    ===================================================== */
-    .card {
-      position: relative;
-      z-index: 2;
-      width: 100%;
-      max-width: 540px;
-      background: rgba(255, 255, 255, 0.95);
-      border: 2px solid rgba(255, 255, 255, 0.9);
-      border-radius: 28px;
-      padding: 30px;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1), 0 0 30px rgba(0, 119, 255, 0.15);
-      animation: aparecer 0.6s ease;
-    }
+    /*
+     * IMPORTANTE:
+     *
+     * YA NO GENERAMOS EL FOLIO AQUÍ.
+     *
+     * Google Apps Script lo genera.
+     */
 
-    @keyframes aparecer {
-      from { opacity: 0; transform: translateY(30px) scale(0.96); }
-      to { opacity: 1; transform: translateY(0) scale(1); }
-    }
 
-    /* =====================================================
-       APARTADO DEL LOGO
-    ===================================================== */
-    .logo-section {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 20px;
-      padding: 5px;
-    }
+    const payload = {
 
-    .logo-title {
-      width: 100%;
-      text-align: center;
-      margin-bottom: 8px;
-      color: var(--gris);
-      font-size: 10px;
-      font-weight: 800;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
+      action:
+        "registro",
 
-    .logo-box {
-      width: 100%;
-      max-width: 430px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 8px;
-    }
+      roblox:
+        document
+          .getElementById("roblox")
+          .value
+          .trim(),
 
-    .logo {
-      width: 100%;
-      max-width: 420px;
-      height: auto;
-      display: block;
-      object-fit: contain;
-      filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.15));
-      transition: transform 0.3s ease;
-    }
+      discord:
+        document
+          .getElementById("discord")
+          .value
+          .trim(),
 
-    .logo:hover {
-      transform: scale(1.025);
-    }
+      edad:
+        document
+          .getElementById("edad")
+          .value,
 
-    /* =====================================================
-       TITULOS
-    ===================================================== */
-    .titulo {
-      text-align: center;
-      color: var(--azul-oscuro);
-      font-size: 26px;
-      font-weight: 900;
-      margin-bottom: 8px;
-    }
+      pais:
+        document
+          .getElementById("pais")
+          .value
+          .trim(),
 
-    .subtitulo {
-      text-align: center;
-      color: var(--gris);
-      font-size: 13px;
-      line-height: 1.6;
-      margin-bottom: 25px;
-    }
+      motivo:
+        motivo.value
+          .trim()
 
-    .subtitulo strong {
-      color: var(--azul-principal);
-    }
+    };
 
-    /* =====================================================
-       CAMPOS DEL FORMULARIO
-    ===================================================== */
-    .campo {
-      margin-bottom: 16px;
-    }
 
-    .campo label {
-      display: block;
-      margin-bottom: 7px;
-      color: #334155;
-      font-size: 12px;
-      font-weight: 800;
-    }
+    try {
 
-    input, textarea {
-      width: 100%;
-      padding: 14px 15px;
-      border: 2px solid var(--gris-claro);
-      border-radius: 13px;
-      background: #f8fafc;
-      color: var(--negro);
-      font-family: inherit;
-      font-size: 14px;
-      outline: none;
-      transition: 0.2s ease;
-    }
+      const response =
+        await fetch(
+          APPS_SCRIPT_URL,
+          {
 
-    input:focus, textarea:focus {
-      background: #ffffff;
-      border-color: var(--azul-principal);
-      box-shadow: 0 0 0 4px rgba(0, 119, 255, 0.12);
-    }
+            method:
+              "POST",
 
-    input::placeholder, textarea::placeholder {
-      color: #94a3b8;
-    }
+            headers: {
 
-    textarea {
-      min-height: 120px;
-      resize: vertical;
-    }
+              "Content-Type":
+                "text/plain;charset=utf-8"
 
-    .contador {
-      text-align: right;
-      margin-top: 4px;
-      color: #94a3b8;
-      font-size: 10px;
-    }
+            },
 
-    /* =====================================================
-       BOTÓN PRINCIPAL
-    ===================================================== */
-    .btn-primary {
-      width: 100%;
-      padding: 16px;
-      margin-top: 5px;
-      border: none;
-      border-radius: 14px;
-      background: linear-gradient(135deg, #0077ff, #00bfff);
-      color: white;
-      font-family: inherit;
-      font-size: 14px;
-      font-weight: 900;
-      letter-spacing: 0.5px;
-      cursor: pointer;
-      box-shadow: 0 8px 20px rgba(0, 119, 255, 0.25);
-      transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
-    }
+            body:
+              JSON.stringify(
+                payload
+              )
 
-    .btn-primary:hover:not(:disabled) {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 25px rgba(0, 119, 255, 0.35);
-    }
+          }
+        );
 
-    .btn-primary:active:not(:disabled) {
-      transform: translateY(0);
-    }
 
-    .btn-primary:disabled {
-      opacity: 0.65;
-      cursor: not-allowed;
-    }
+      const result =
+        await response.json();
 
-    /* =====================================================
-       MENSAJES DE ALERTA
-    ===================================================== */
-    .mensaje {
-      display: none;
-      padding: 12px 14px;
-      margin-bottom: 16px;
-      border-radius: 10px;
-      font-size: 13px;
-      font-weight: 700;
-      text-align: center;
-    }
 
-    .mensaje.error {
-      display: block;
-      background: #fee2e2;
-      color: #991b1b;
-      border: 1px solid #fecaca;
-    }
+      console.log(
+        "Respuesta Apps Script:",
+        result
+      );
 
-    /* =====================================================
-       PANTALLA DE ÉXITO
-    ===================================================== */
-    .hidden {
-      display: none !important;
-    }
 
-    .exito {
-      text-align: center;
-    }
+      if (
+        !result.success
+      ) {
 
-    .check {
-      width: 78px;
-      height: 78px;
-      margin: 0 auto 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #22c55e, #15803d);
-      color: white;
-      font-size: 40px;
-      font-weight: 900;
-      box-shadow: 0 10px 25px rgba(22, 163, 74, 0.3);
-    }
+        throw new Error(
+          result.mensaje ||
+          "No se pudo registrar la postulación."
+        );
 
-    .exito h2 {
-      color: var(--azul-oscuro);
-      font-size: 25px;
-      font-weight: 900;
-      margin-bottom: 9px;
-    }
-
-    .exito-texto {
-      color: var(--gris);
-      font-size: 13px;
-      line-height: 1.6;
-    }
-
-    /* =====================================================
-       CAJA DE FOLIO
-    ===================================================== */
-    .folio-result-box {
-      margin: 22px 0;
-      padding: 22px;
-      background: linear-gradient(135deg, #f0f7ff, #e0f2fe);
-      border: 2px dashed var(--azul-principal);
-      border-radius: 18px;
-      box-shadow: 0 8px 20px rgba(0, 119, 255, 0.08);
-    }
-
-    .folio-label {
-      color: #64748b;
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 1px;
-    }
-
-    .folio-code {
-      margin-top: 8px;
-      color: #0369a1;
-      font-size: 28px;
-      font-weight: 900;
-      letter-spacing: 1px;
-      word-break: break-word;
-    }
-
-    /* =====================================================
-       BOTONES SECUNDARIOS EN ÉXITO
-    ===================================================== */
-    .btn-consulta {
-      display: block;
-      width: 100%;
-      padding: 14px;
-      border-radius: 13px;
-      background: var(--azul-oscuro);
-      color: white;
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 800;
-      transition: 0.2s ease;
-      box-shadow: 0 4px 12px rgba(10, 37, 64, 0.2);
-    }
-
-    .btn-consulta:hover {
-      background: #11355c;
-      transform: translateY(-1px);
-    }
-
-    .btn-nuevo {
-      width: 100%;
-      padding: 12px;
-      margin-top: 10px;
-      border: 2px solid #cbd5e1;
-      border-radius: 13px;
-      background: white;
-      color: #334155;
-      font-family: inherit;
-      font-size: 12px;
-      font-weight: 800;
-      cursor: pointer;
-      transition: 0.2s ease;
-    }
-
-    .btn-nuevo:hover {
-      background: #f8fafc;
-    }
-
-    .footer {
-      margin-top: 20px;
-      text-align: center;
-      color: #94a3b8;
-      font-size: 10px;
-      font-weight: 600;
-    }
-
-    /* =====================================================
-       RESPONSIVE
-    ===================================================== */
-    @media (max-width: 600px) {
-      body {
-        padding: 15px;
-        align-items: flex-start;
       }
-      .card {
-        padding: 22px 17px;
-        border-radius: 22px;
+
+
+      /*
+       * FOLIO GENERADO POR APPS SCRIPT
+       */
+
+      const folio =
+        result.folio;
+
+
+      if (!folio) {
+
+        throw new Error(
+          "Apps Script no devolvió un folio."
+        );
+
       }
-      .logo {
-        max-width: 320px;
-      }
-      .titulo {
-        font-size: 21px;
-      }
-      .folio-code {
-        font-size: 22px;
-      }
+
+
+      /*
+       * Guardarlo localmente
+       */
+
+      localStorage.setItem(
+        "ultimoFolioLCDF",
+        folio
+      );
+
+
+      /*
+       * Mostrar folio
+       */
+
+      folioGenerado.textContent =
+        folio;
+
+
+      /*
+       * Cambiar pantalla
+       */
+
+      formContainer
+        .classList
+        .add("hidden");
+
+
+      exitoRegistro
+        .classList
+        .remove("hidden");
+
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
+
     }
-  </style>
-</head>
 
-<body>
+    catch (error) {
 
-  <main class="card">
+      console.error(
+        "Error:",
+        error
+      );
 
-    <!-- APARTADO DEL LOGO -->
-    <div class="logo-section">
-      <div class="logo-title">
-        LA CASA DE LOS FAMOSOS ROBLOX
-      </div>
-      <div class="logo-box">
-        <img src="logo.png" alt="Logo La Casa de los Famosos Roblox" class="logo">
-      </div>
-    </div>
 
-    <!-- FORMULARIO -->
-    <section id="formContainer">
+      mostrarError(
+        error.message ||
+        "No se pudo enviar la postulación. Intenta nuevamente."
+      );
 
-      <h1 class="titulo">
-        Registro de Postulación
-      </h1>
 
-      <p class="subtitulo">
-        ¿Tienes lo necesario para entrar a <strong>La Casa de los Famosos Roblox</strong>? Completa tu solicitud para participar.
-      </p>
+      btnSubmit.disabled =
+        false;
 
-      <div id="mensaje" class="mensaje"></div>
+      btnSubmit.textContent =
+        "ENVIAR POSTULACIÓN";
 
-      <form id="postulacionForm">
+    }
 
-        <div class="campo">
-          <label for="roblox">🎮 USUARIO DE ROBLOX</label>
-          <input type="text" id="roblox" maxlength="30" autocomplete="off" required placeholder="Ej. RobloxPlayer123">
-        </div>
+  }
+);
 
-        <div class="campo">
-          <label for="discord">💬 USUARIO DE DISCORD</label>
-          <input type="text" id="discord" maxlength="40" autocomplete="off" required placeholder="Ej. usuario123">
-        </div>
 
-        <div class="campo">
-          <label for="edad">🎂 EDAD</label>
-          <input type="number" id="edad" min="13" max="99" required placeholder="Ej. 16">
-        </div>
+/* ==========================================
+   NUEVA POSTULACIÓN
+========================================== */
 
-        <div class="campo">
-          <label for="pais">🌎 PAÍS</label>
-          <input type="text" id="pais" maxlength="40" required placeholder="Ej. México">
-        </div>
+btnNuevo.addEventListener(
+  "click",
+  function () {
 
-        <div class="campo">
-          <label for="motivo">⭐ ¿POR QUÉ DEBERÍAS ENTRAR?</label>
-          <textarea id="motivo" maxlength="500" required placeholder="Cuéntanos por qué quieres formar parte de la casa..."></textarea>
-          <div class="contador" id="contador">0 / 500</div>
-        </div>
+    form.reset();
 
-        <button type="submit" class="btn-primary" id="btnSubmit">
-          ENVIAR POSTULACIÓN
-        </button>
+    limpiarMensaje();
 
-      </form>
+    contador.textContent =
+      "0 / 500";
 
-      <div class="footer">
-        La Casa de los Famosos Roblox
-      </div>
 
-    </section>
+    exitoRegistro
+      .classList
+      .add("hidden");
 
-    <!-- PANTALLA DE ÉXITO -->
-    <section id="exitoRegistro" class="hidden exito">
 
-      <div class="check">✓</div>
+    formContainer
+      .classList
+      .remove("hidden");
 
-      <h2>¡Postulación Enviada!</h2>
 
-      <p class="exito-texto">
-        Tu solicitud fue enviada correctamente. Se te asignó un folio único de seguimiento.
-      </p>
+    btnSubmit.disabled =
+      false;
 
-      <div class="folio-result-box">
-        <div class="folio-label">TU FOLIO DE POSTULACIÓN</div>
-        <div id="folioGenerado" class="folio-code">LCDF-00000000</div>
-      </div>
+    btnSubmit.textContent =
+      "ENVIAR POSTULACIÓN";
 
-      <p class="exito-texto">
-        Guarda este folio. Lo necesitarás para consultar el estado de tu postulación.
-      </p>
 
-      <a href="consulta.html" class="btn-consulta">
-        🔎 CONSULTAR ESTADO
-      </a>
-
-      <button type="button" class="btn-nuevo" id="btnNuevo">
-        HACER OTRA POSTULACIÓN
-      </button>
-
-    </section>
-
-  </main>
-
-  <!-- JAVASCRIPT -->
-  <script>
-    const APPS_SCRIPT_URL = ""; // Pega aquí tu URL de Google Apps Script
-
-    const form = document.getElementById("postulacionForm");
-    const btnSubmit = document.getElementById("btnSubmit");
-    const mensaje = document.getElementById("mensaje");
-    const formContainer = document.getElementById("formContainer");
-    const exitoRegistro = document.getElementById("exitoRegistro");
-    const folioGenerado = document.getElementById("folioGenerado");
-    const btnNuevo = document.getElementById("btnNuevo");
-    const motivo = document.getElementById("motivo");
-    const contador = document.getElementById("contador");
-
-    motivo.addEventListener("input", function() {
-      contador.textContent = `${motivo.value.length} / 500`;
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
     });
 
-    function generarFolio() {
-      const fecha = new Date();
-      const año = fecha.getFullYear();
-      const mes = String(fecha.getMonth() + 1).padStart(2, "0");
-      const dia = String(fecha.getDate()).padStart(2, "0");
-      const hora = String(fecha.getHours()).padStart(2, "0");
-      const minutos = String(fecha.getMinutes()).padStart(2, "0");
-      const segundos = String(fecha.getSeconds()).padStart(2, "0");
-      const caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-      let aleatorio = "";
-      for (let i = 0; i < 4; i++) {
-        aleatorio += caracteres[Math.floor(Math.random() * caracteres.length)];
-      }
-      return `LCDF-${año}${mes}${dia}-${hora}${minutos}${segundos}-${aleatorio}`;
-    }
+  }
+);
 
-    function mostrarError(texto) {
-      mensaje.textContent = texto;
-      mensaje.className = "mensaje error";
-    }
-
-    function limpiarMensaje() {
-      mensaje.textContent = "";
-      mensaje.className = "mensaje";
-    }
-
-    function validarFormulario() {
-      const roblox = document.getElementById("roblox").value.trim();
-      const discord = document.getElementById("discord").value.trim();
-      const edad = Number(document.getElementById("edad").value);
-      const pais = document.getElementById("pais").value.trim();
-      const textoMotivo = motivo.value.trim();
-
-      if (!roblox) {
-        mostrarError("Escribe tu usuario de Roblox.");
-        return false;
-      }
-      if (!discord) {
-        mostrarError("Escribe tu usuario de Discord.");
-        return false;
-      }
-      if (!edad || edad < 13 || edad > 99) {
-        mostrarError("La edad debe estar entre 13 y 99 años.");
-        return false;
-      }
-      if (!pais) {
-        mostrarError("Escribe tu país.");
-        return false;
-      }
-      if (textoMotivo.length < 15) {
-        mostrarError("Escribe al menos 15 caracteres explicando por qué deberías entrar.");
-        return false;
-      }
-      return true;
-    }
-
-    form.addEventListener("submit", async function(e) {
-      e.preventDefault();
-      limpiarMensaje();
-
-      if (!APPS_SCRIPT_URL.trim()) {
-        mostrarError("El administrador todavía no ha configurado la URL de Google Apps Script.");
-        return;
-      }
-
-      if (!validarFormulario()) {
-        return;
-      }
-
-      btnSubmit.disabled = true;
-      btnSubmit.textContent = "ENVIANDO POSTULACIÓN...";
-
-      const folio = generarFolio();
-      const payload = {
-        action: "registro",
-        folio: folio,
-        roblox: document.getElementById("roblox").value.trim(),
-        discord: document.getElementById("discord").value.trim(),
-        edad: document.getElementById("edad").value,
-        pais: document.getElementById("pais").value.trim(),
-        motivo: motivo.value.trim()
-      };
-
-      try {
-        await fetch(APPS_SCRIPT_URL, {
-          method: "POST",
-          body: JSON.stringify(payload),
-          mode: "no-cors"
-        });
-
-        localStorage.setItem("ultimoFolioLCDF", folio);
-        folioGenerado.textContent = folio;
-
-        formContainer.classList.add("hidden");
-        exitoRegistro.classList.remove("hidden");
-
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      } catch (error) {
-        console.error("Error:", error);
-        mostrarError("No se pudo enviar la postulación. Intenta nuevamente.");
-        btnSubmit.disabled = false;
-        btnSubmit.textContent = "ENVIANDO POSTULACIÓN...";
-      }
-    });
-
-    btnNuevo.addEventListener("click", function() {
-      form.reset();
-      limpiarMensaje();
-      contador.textContent = "0 / 500";
-      exitoRegistro.classList.add("hidden");
-      formContainer.classList.remove("hidden");
-      btnSubmit.disabled = false;
-      btnSubmit.textContent = "ENVIANDO POSTULACIÓN...";
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    });
-  </script>
-
-</body>
-</html>
+</script>
