@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Postulaciones - La Casa de los Famosos Roblox</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: #090e17;
+      background-image: radial-gradient(circle at 50% 0%, #1e1b4b 0%, #090e17 70%);
+      color: #f8fafc;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .card {
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      backdrop-filter: blur(12px);
+      border-radius: 20px;
+      max-width: 520px;
+      width: 100%;
+      padding: 32px;
+      box-shadow: 0 0 40px rgba(14, 165, 233, 0.15), 0 20px 25px -5px rgba(0, 0, 0, 0.6);
+    }
+
+    .logo-img {
+      width: 100%;
+      max-width: 320px;
+      height: auto;
+      display: block;
+      margin: 0 auto 10px auto;
+      filter: drop-shadow(0 10px 15px rgba(2, 132, 199, 0.4));
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(14, 165, 233, 0.15);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      padding: 5px 14px;
+      border-radius: 9999px;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 12px;
+    }
+
+    p.subtitle {
+      color: #94a3b8;
+      text-align: center;
+      font-size: 14px;
+      margin-bottom: 28px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      color: #38bdf8;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px 14px;
+      background: #070c14;
+      border: 1px solid #1e293b;
+      border-radius: 10px;
+      color: #f8fafc;
+      font-size: 15px;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #0284c7;
+      box-shadow: 0 0 12px rgba(2, 132, 199, 0.4);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 90px;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 10px;
+      box-shadow: 0 4px 15px rgba(2, 132, 199, 0.4);
+      transition: all 0.2s ease;
+    }
+
+    button:hover {
+      background: linear-gradient(135deg, #0369a1 0%, #1d4ed8 100%);
+      box-shadow: 0 6px 20px rgba(2, 132, 199, 0.6);
+    }
+
+    button:active {
+      transform: scale(0.99);
+    }
+
+    button:disabled {
+      background: #475569;
+      box-shadow: none;
+      cursor: not-allowed;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    /* Estilos de Confirmación / Folio */
+    .success-box {
+      text-align: center;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .folio-container {
+      background: linear-gradient(135deg, rgba(6, 78, 59, 0.6) 0%, rgba(15, 23, 42, 0.8) 100%);
+      border: 2px dashed #34d399;
+      border-radius: 14px;
+      padding: 24px;
+      margin: 24px 0;
+      box-shadow: 0 0 20px rgba(52, 211, 153, 0.15);
+    }
+
+    .folio-label {
+      font-size: 11px;
+      color: #a7f3d0;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-weight: 700;
+    }
+
+    .folio-code {
+      font-size: 32px;
+      font-weight: 900;
+      color: #38bdf8;
+      letter-spacing: 3px;
+      font-family: 'Courier New', Courier, monospace;
+      margin-top: 8px;
+      text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+    }
+
+    .alert-info {
+      background: rgba(30, 41, 59, 0.7);
+      border-left: 4px solid #38bdf8;
+      padding: 12px;
+      border-radius: 6px;
+      font-size: 13px;
+      color: #cbd5e1;
+      text-align: left;
+      margin-bottom: 20px;
+      line-height: 1.4;
+    }
+
+    .btn-next {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      background: #0284c7;
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: 800;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: background 0.2s ease;
+    }
+
+    .btn-next:hover {
+      background: #0369a1;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    
+    <!-- SECCIÓN DEL FORMULARIO -->
+    <div id="formContainer">
+      <!-- MUESTRA TU LOGO -->
+      <img src="logo.png" alt="La Casa de los Famosos Roblox" class="logo-img">
+      
+      <div style="text-align: center;">
+        <span class="badge">Registro Oficial</span>
+      </div>
+      <p class="subtitle">Llena la solicitud oficial para ser un habitante.</p>
+
+      <form id="postulacionForm">
+        <div class="form-group">
+          <label for="roblox">Usuario de Roblox *</label>
+          <input type="text" id="roblox" required placeholder="Ej: UserRoblox123">
+        </div>
+
+        <div class="form-group">
+          <label for="discord">Usuario de Discord *</label>
+          <input type="text" id="discord" required placeholder="Ej: usuario_discord">
+        </div>
+
+        <div class="form-group">
+          <label for="edad">Edad *</label>
+          <input type="number" id="edad" min="10" max="99" required placeholder="Ej: 16">
+        </div>
+
+        <div class="form-group">
+          <label for="pais">País y Zona Horaria *</label>
+          <input type="text" id="pais" required placeholder="Ej: México (GMT-6)">
+        </div>
+
+        <div class="form-group">
+          <label for="motivo">¿Por qué deberías ser un habitante? *</label>
+          <textarea id="motivo" rows="3" required placeholder="Cuéntanos tu estrategia o personalidad..."></textarea>
+        </div>
+
+        <button type="submit" id="btnSubmit">ENVIAR POSTULACIÓN</button>
+      </form>
+    </div>
+
+    <!-- SECCIÓN DE CONFIRMACIÓN Y FOLIO (OCULTA INICIALMENTE) -->
+    <div id="confirmacionBox" class="success-box hidden">
+      <h2 style="color: #34d399; font-size: 22px; text-transform: uppercase; margin-bottom: 8px;">¡Solicitud Registrada!</h2>
+      <p style="color: #cbd5e1; font-size: 14px;">Hemos guardado tus datos correctamente en el sistema.</p>
+
+      <div class="folio-container">
+        <div class="folio-label">Tu Folio Único de Consulta</div>
+        <div class="folio-code" id="folioOutput">LCDF-2026-0000</div>
+      </div>
+
+      <div class="alert-info">
+        📌 <strong>IMPORTANTE:</strong> Toma una captura de pantalla o anota tu folio en un lugar seguro. Lo necesitarás el día de publicación de resultados para verificar si fuiste seleccionado y conocer tu habitación.
+      </div>
+
+      <a href="resultados.html" class="btn-next">Consultar Estatus</a>
+    </div>
+
+  </div>
+
+  <script>
+    // =========================================================================
+    // PEGA AQUÍ LA URL DE TU GOOGLE APPS SCRIPT
+    // =========================================================================
+    const APPS_SCRIPT_URL = "https://script.google.com/macros/s/TU_SCRIPT_ID_AQUI/exec";
+    // =========================================================================
+
+    document.getElementById('postulacionForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const btn = document.getElementById('btnSubmit');
+      btn.innerText = "Guardando en el sistema...";
+      btn.disabled = true;
+
+      // Generar Folio Único de 4 dígitos aleatorios (Ej: LCDF-2026-8492)
+      const randomNum = Math.floor(1000 + Math.random() * 9000);
+      const folioGenerado = `LCDF-2026-${randomNum}`;
+
+      // Estructura de los datos
+      const payload = {
+        roblox: document.getElementById('roblox').value.trim(),
+        discord: document.getElementById('discord').value.trim(),
+        edad: document.getElementById('edad').value.trim(),
+        pais: document.getElementById('pais').value.trim(),
+        motivo: document.getElementById('motivo').value.trim(),
+        folio: folioGenerado
+      };
+
+      try {
+        await fetch(APPS_SCRIPT_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(payload)
+        });
+
+        document.getElementById('formContainer').classList.add('hidden');
+        document.getElementById('folioOutput').innerText = folioGenerado;
+        document.getElementById('confirmacionBox').classList.remove('hidden');
+
+      } catch (error) {
+        console.error("Error al enviar la postulación:", error);
+        alert("Ocurrió un error al procesar tu registro. Por favor intenta de nuevo.");
+        btn.innerText = "ENVIAR POSTULACIÓN";
+        btn.disabled = false;
+      }
+    });
+  </script>
+
+</body>
+</html>
