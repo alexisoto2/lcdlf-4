@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>La Casa de los Famosos Roblox - Portal Oficial</title>
+  <title>La Casa de los Famosos Roblox - Registro</title>
   <style>
     * {
       box-sizing: border-box;
@@ -13,7 +13,6 @@
     }
 
     body {
-      /* Fondo pastel inspirado en las nubes de la imagen */
       background: radial-gradient(circle at 20% 20%, #e0c3fc 0%, #8ec5fc 40%, #fbc2eb 70%, #a1c4fd 100%);
       background-attachment: fixed;
       min-height: 100vh;
@@ -43,40 +42,39 @@
 
     .logo-img {
       width: 100%;
-      max-width: 300px;
+      max-width: 280px;
       height: auto;
       filter: drop-shadow(0 8px 16px rgba(37, 99, 235, 0.3));
     }
 
-    /* Pestañas de Navegación */
-    .tabs {
+    .nav-buttons {
       display: flex;
-      background: rgba(255, 255, 255, 0.6);
-      border-radius: 14px;
-      padding: 5px;
-      margin-bottom: 24px;
-      border: 1px solid rgba(255, 255, 255, 0.8);
+      gap: 10px;
+      margin-bottom: 20px;
     }
 
-    .tab-btn {
+    .nav-link {
       flex: 1;
-      padding: 12px;
-      border: none;
-      background: transparent;
-      color: #475569;
+      text-align: center;
+      padding: 10px;
+      border-radius: 10px;
+      text-decoration: none;
       font-weight: 800;
       font-size: 13px;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: all 0.25s ease;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      transition: all 0.2s ease;
     }
 
-    .tab-btn.active {
+    .nav-link.active {
       background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 50%, #3b82f6 100%);
       color: #ffffff;
       box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+    }
+
+    .nav-link.inactive {
+      background: rgba(255, 255, 255, 0.6);
+      color: #475569;
+      border: 1px solid rgba(255, 255, 255, 0.8);
     }
 
     .form-group {
@@ -90,7 +88,6 @@
       color: #1e40af;
       margin-bottom: 6px;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
     }
 
     input, textarea {
@@ -127,7 +124,6 @@
       border-radius: 12px;
       cursor: pointer;
       text-transform: uppercase;
-      letter-spacing: 1px;
       margin-top: 8px;
       box-shadow: 0 6px 18px rgba(37, 99, 235, 0.35);
       transition: all 0.2s ease;
@@ -138,15 +134,10 @@
       box-shadow: 0 8px 22px rgba(37, 99, 235, 0.45);
     }
 
-    .btn-primary:active {
-      transform: translateY(0);
-    }
-
     .hidden {
       display: none;
     }
 
-    /* Caja del Folio Registrado */
     .folio-result-box {
       background: rgba(255, 255, 255, 0.9);
       border: 2px dashed #2563eb;
@@ -165,30 +156,6 @@
       margin-top: 6px;
     }
 
-    /* Caja de Estatus de Consulta */
-    .status-card {
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 16px;
-      padding: 20px;
-      margin-top: 20px;
-      border-left: 6px solid #2563eb;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    }
-
-    .status-badge {
-      display: inline-block;
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-weight: 800;
-      font-size: 12px;
-      text-transform: uppercase;
-      margin-top: 6px;
-    }
-
-    .status-revision { background: #fef3c7; color: #b45309; }
-    .status-aceptado { background: #dcfce7; color: #15803d; }
-    .status-rechazado { background: #fee2e2; color: #b91c1c; }
-
     .info-note {
       background: rgba(219, 234, 254, 0.7);
       border: 1px solid #bfdbfe;
@@ -204,120 +171,66 @@
 <body>
 
   <div class="card">
-    
-    <!-- LOGO -->
     <div class="logo-container">
       <img src="logo.png" alt="La Casa de los Famosos Roblox" class="logo-img">
     </div>
 
-    <!-- PESTAÑAS -->
-    <div class="tabs">
-      <button class="tab-btn active" id="tabRegistroBtn" onclick="mostrarPestana('registro')">1. Registro</button>
-      <button class="tab-btn" id="tabConsultaBtn" onclick="mostrarPestana('consulta')">2. Consultar Estatus</button>
+    <!-- Menú de Navegación -->
+    <div class="nav-buttons">
+      <a href="index.html" class="nav-link active">1. Registro</a>
+      <a href="consulta.html" class="nav-link inactive">2. Consulta</a>
     </div>
 
-    <!-- PESTAÑA 1: FORMULARIO DE REGISTRO -->
-    <div id="seccionRegistro">
-      <form id="postulacionForm">
-        <div class="form-group">
-          <label for="roblox">Usuario de Roblox *</label>
-          <input type="text" id="roblox" required placeholder="Ej: UserRoblox123">
-        </div>
+    <!-- Formulario de Registro -->
+    <form id="postulacionForm">
+      <div class="form-group">
+        <label for="roblox">Usuario de Roblox *</label>
+        <input type="text" id="roblox" required placeholder="Ej: UserRoblox123">
+      </div>
 
-        <div class="form-group">
-          <label for="discord">Usuario de Discord *</label>
-          <input type="text" id="discord" required placeholder="Ej: usuario_discord">
-        </div>
+      <div class="form-group">
+        <label for="discord">Usuario de Discord *</label>
+        <input type="text" id="discord" required placeholder="Ej: usuario_discord">
+      </div>
 
-        <div class="form-group">
-          <label for="edad">Edad *</label>
-          <input type="number" id="edad" min="10" max="99" required placeholder="Ej: 16">
-        </div>
+      <div class="form-group">
+        <label for="edad">Edad *</label>
+        <input type="number" id="edad" min="10" max="99" required placeholder="Ej: 16">
+      </div>
 
-        <div class="form-group">
-          <label for="pais">País / Zona Horaria *</label>
-          <input type="text" id="pais" required placeholder="Ej: México (GMT-6)">
-        </div>
+      <div class="form-group">
+        <label for="pais">País / Zona Horaria *</label>
+        <input type="text" id="pais" required placeholder="Ej: México (GMT-6)">
+      </div>
 
-        <div class="form-group">
-          <label for="motivo">¿Por qué deberías entrar? *</label>
-          <textarea id="motivo" required placeholder="Cuéntanos tu estrategia o personalidad..."></textarea>
-        </div>
+      <div class="form-group">
+        <label for="motivo">¿Por qué deberías entrar? *</label>
+        <textarea id="motivo" required placeholder="Cuéntanos tu estrategia o personalidad..."></textarea>
+      </div>
 
-        <button type="submit" class="btn-primary" id="btnSubmit">Enviar Postulación</button>
-      </form>
+      <button type="submit" class="btn-primary" id="btnSubmit">Enviar Postulación</button>
+    </form>
 
-      <!-- Mensaje de éxito tras registrarse -->
-      <div id="exitoRegistro" class="hidden">
-        <h3 style="color: #1e40af; text-align: center; font-size: 20px;">¡Postulación Guardada!</h3>
-        <p style="text-align: center; font-size: 13px; color: #475569; margin-top: 4px;">Guarda este código para consultar tus resultados:</p>
-        
-        <div class="folio-result-box">
-          <span style="font-size: 11px; text-transform: uppercase; color: #64748b; font-weight: 700;">Tu Folio Único</span>
-          <div class="folio-code" id="folioGenerado">LCDF-0000</div>
-        </div>
+    <!-- Pantalla de Éxito al Registrarse -->
+    <div id="exitoRegistro" class="hidden">
+      <h3 style="color: #1e40af; text-align: center; font-size: 20px;">¡Postulación Guardada!</h3>
+      <p style="text-align: center; font-size: 13px; color: #475569; margin-top: 4px;">Guarda este código para consultar tus resultados:</p>
+      
+      <div class="folio-result-box">
+        <span style="font-size: 11px; text-transform: uppercase; color: #64748b; font-weight: 700;">Tu Folio Único</span>
+        <div class="folio-code" id="folioGenerado">LCDF-0000</div>
+      </div>
 
-        <div class="info-note">
-          📌 <strong>Importante:</strong> Toma una captura de pantalla. Puedes ir a la pestaña <strong>"Consultar Estatus"</strong> en cualquier momento para revisar si fuiste seleccionado.
-        </div>
+      <div class="info-note">
+        📌 <strong>Importante:</strong> Toma una captura de pantalla. Haz clic en el botón <strong>"2. CONSULTA"</strong> arriba para revisar el estado de tu solicitud.
       </div>
     </div>
-
-    <!-- PESTAÑA 2: CONSULTA DE ESTATUS POR FOLIO -->
-    <div id="seccionConsulta" class="hidden">
-      <form id="consultaForm">
-        <div class="form-group">
-          <label for="folioInput">Ingresa tu Folio *</label>
-          <input type="text" id="folioInput" required placeholder="Ej: LCDF-2026-8492" style="text-transform: uppercase;">
-        </div>
-        <button type="submit" class="btn-primary" id="btnBuscar">Buscar Folio</button>
-      </form>
-
-      <!-- Resultado de la consulta -->
-      <div id="resultadoConsulta" class="hidden">
-        <div class="status-card">
-          <div style="font-size: 12px; color: #64748b; font-weight: 700;">USUARIO: <span id="resUsuario" style="color: #0f172a;">-</span></div>
-          <div style="margin-top: 8px;">
-            <span style="font-size: 12px; font-weight: 700; color: #1e40af;">ESTATUS:</span><br>
-            <span id="resEstatus" class="status-badge status-revision">En Revisión</span>
-          </div>
-          <div style="margin-top: 12px; font-size: 13px; color: #334155;" id="resDetalle">
-            Tu solicitud está siendo evaluada por el equipo de producción.
-          </div>
-        </div>
-      </div>
-    </div>
-
   </div>
 
   <script>
-    // =========================================================================
-    // PEGA AQUÍ LA URL DE TU GOOGLE APPS SCRIPT
-    // =========================================================================
+    // URL de tu web app de Google Apps Script
     const APPS_SCRIPT_URL = "https://script.google.com/macros/s/TU_SCRIPT_ID_AQUI/exec";
-    // =========================================================================
 
-    // Cambiar entre Pestañas (Registro y Consulta)
-    function mostrarPestana(pestana) {
-      const regSection = document.getElementById('seccionRegistro');
-      const conSection = document.getElementById('seccionConsulta');
-      const tabRegBtn = document.getElementById('tabRegistroBtn');
-      const tabConBtn = document.getElementById('tabConsultaBtn');
-
-      if (pestana === 'registro') {
-        regSection.classList.remove('hidden');
-        conSection.classList.add('hidden');
-        tabRegBtn.classList.add('active');
-        tabConBtn.classList.remove('active');
-      } else {
-        regSection.classList.add('hidden');
-        conSection.classList.remove('hidden');
-        tabConBtn.classList.add('active');
-        tabRegBtn.classList.remove('active');
-      }
-    }
-
-    // Enviar Registro
     document.getElementById('postulacionForm').addEventListener('submit', async function(e) {
       e.preventDefault();
       const btn = document.getElementById('btnSubmit');
@@ -355,55 +268,6 @@
         btn.disabled = false;
       }
     });
-
-    // Consultar Estatus
-    document.getElementById('consultaForm').addEventListener('submit', async function(e) {
-      e.preventDefault();
-      const folioBuscado = document.getElementById('folioInput').value.trim().toUpperCase();
-      const btn = document.getElementById('btnBuscar');
-      btn.innerText = "BUSCANDO...";
-      btn.disabled = true;
-
-      try {
-        const response = await fetch(`${APPS_SCRIPT_URL}?folio=${encodeURIComponent(folioBuscado)}`);
-        const data = await response.json();
-
-        document.getElementById('resultadoConsulta').classList.remove('hidden');
-
-        if (data.encontrado) {
-          document.getElementById('resUsuario').innerText = data.roblox;
-          const badge = document.getElementById('resEstatus');
-          const detalle = document.getElementById('resDetalle');
-
-          if (data.estatus === "Aceptado") {
-            badge.innerText = "¡SELECCIONADO!";
-            badge.className = "status-badge status-aceptado";
-            detalle.innerText = "🎉 ¡Felicidades! Has sido seleccionado como habitante. Revisa Discord para las instrucciones de acceso.";
-          } else if (data.estatus === "Rechazado") {
-            badge.innerText = "No Seleccionado";
-            badge.className = "status-badge status-rechazado";
-            detalle.innerText = "Gracias por postularte. En esta oportunidad no fuiste seleccionado.";
-          } else {
-            badge.innerText = "En Revisión";
-            badge.className = "status-badge status-revision";
-            detalle.innerText = "Tu solicitud aún está siendo evaluada por la producción.";
-          }
-        } else {
-          document.getElementById('resUsuario').innerText = "N/A";
-          const badge = document.getElementById('resEstatus');
-          badge.innerText = "No Encontrado";
-          badge.className = "status-badge status-rechazado";
-          document.getElementById('resDetalle').innerText = "El folio ingresado no existe en nuestro sistema. Verifica que esté bien escrito.";
-        }
-
-      } catch (err) {
-        alert("Ocurrió un error al consultar el folio. Intenta nuevamente.");
-      } finally {
-        btn.innerText = "Buscar Folio";
-        btn.disabled = false;
-      }
-    });
   </script>
-
 </body>
 </html>
