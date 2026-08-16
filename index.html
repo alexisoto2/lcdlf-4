@@ -3,76 +3,91 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Postulaciones - La Casa de los Famosos Roblox</title>
+  <title>La Casa de los Famosos Roblox - Portal Oficial</title>
   <style>
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
     }
 
     body {
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      background: #090e17;
-      background-image: radial-gradient(circle at 50% 0%, #1e1b4b 0%, #090e17 70%);
-      color: #f8fafc;
+      /* Fondo pastel inspirado en las nubes de la imagen */
+      background: radial-gradient(circle at 20% 20%, #e0c3fc 0%, #8ec5fc 40%, #fbc2eb 70%, #a1c4fd 100%);
+      background-attachment: fixed;
       min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
       padding: 20px;
+      color: #1e293b;
     }
 
     .card {
-      background: rgba(15, 23, 42, 0.85);
-      border: 1px solid rgba(56, 189, 248, 0.2);
-      backdrop-filter: blur(12px);
-      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 2px solid rgba(255, 255, 255, 0.9);
+      border-radius: 24px;
       max-width: 520px;
       width: 100%;
-      padding: 32px;
-      box-shadow: 0 0 40px rgba(14, 165, 233, 0.15), 0 20px 25px -5px rgba(0, 0, 0, 0.6);
+      padding: 28px;
+      box-shadow: 0 20px 40px rgba(37, 99, 235, 0.15), 0 10px 25px rgba(147, 51, 234, 0.1);
+    }
+
+    .logo-container {
+      text-align: center;
+      margin-bottom: 20px;
     }
 
     .logo-img {
       width: 100%;
-      max-width: 320px;
+      max-width: 300px;
       height: auto;
-      display: block;
-      margin: 0 auto 10px auto;
-      filter: drop-shadow(0 10px 15px rgba(2, 132, 199, 0.4));
+      filter: drop-shadow(0 8px 16px rgba(37, 99, 235, 0.3));
     }
 
-    .badge {
-      display: inline-block;
-      background: rgba(14, 165, 233, 0.15);
-      color: #38bdf8;
-      border: 1px solid rgba(56, 189, 248, 0.4);
-      padding: 5px 14px;
-      border-radius: 9999px;
-      font-size: 11px;
+    /* Pestañas de Navegación */
+    .tabs {
+      display: flex;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 14px;
+      padding: 5px;
+      margin-bottom: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.8);
+    }
+
+    .tab-btn {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      background: transparent;
+      color: #475569;
       font-weight: 800;
+      font-size: 13px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.25s ease;
       text-transform: uppercase;
-      letter-spacing: 1.5px;
-      margin-bottom: 12px;
+      letter-spacing: 0.5px;
     }
 
-    p.subtitle {
-      color: #94a3b8;
-      text-align: center;
-      font-size: 14px;
-      margin-bottom: 28px;
+    .tab-btn.active {
+      background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 50%, #3b82f6 100%);
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
     }
 
     .form-group {
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
 
     label {
       display: block;
       font-size: 12px;
-      font-weight: 700;
-      color: #38bdf8;
+      font-weight: 800;
+      color: #1e40af;
       margin-bottom: 6px;
       text-transform: uppercase;
       letter-spacing: 0.5px;
@@ -80,129 +95,109 @@
 
     input, textarea {
       width: 100%;
-      padding: 12px 14px;
-      background: #070c14;
-      border: 1px solid #1e293b;
-      border-radius: 10px;
-      color: #f8fafc;
-      font-size: 15px;
+      padding: 12px 16px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 2px solid #cbd5e1;
+      border-radius: 12px;
+      color: #0f172a;
+      font-size: 14px;
       outline: none;
       transition: all 0.2s ease;
     }
 
     input:focus, textarea:focus {
-      border-color: #0284c7;
-      box-shadow: 0 0 12px rgba(2, 132, 199, 0.4);
+      border-color: #2563eb;
+      background: #ffffff;
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
     }
 
     textarea {
       resize: vertical;
-      min-height: 90px;
+      min-height: 80px;
     }
 
-    button {
+    .btn-primary {
       width: 100%;
       padding: 14px;
-      background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
+      background: linear-gradient(135deg, #1e40af 0%, #2563eb 50%, #3b82f6 100%);
       color: #ffffff;
       font-weight: 800;
-      font-size: 16px;
+      font-size: 15px;
       border: none;
-      border-radius: 10px;
+      border-radius: 12px;
       cursor: pointer;
       text-transform: uppercase;
       letter-spacing: 1px;
-      margin-top: 10px;
-      box-shadow: 0 4px 15px rgba(2, 132, 199, 0.4);
+      margin-top: 8px;
+      box-shadow: 0 6px 18px rgba(37, 99, 235, 0.35);
       transition: all 0.2s ease;
     }
 
-    button:hover {
-      background: linear-gradient(135deg, #0369a1 0%, #1d4ed8 100%);
-      box-shadow: 0 6px 20px rgba(2, 132, 199, 0.6);
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(37, 99, 235, 0.45);
     }
 
-    button:active {
-      transform: scale(0.99);
-    }
-
-    button:disabled {
-      background: #475569;
-      box-shadow: none;
-      cursor: not-allowed;
+    .btn-primary:active {
+      transform: translateY(0);
     }
 
     .hidden {
       display: none;
     }
 
-    /* Estilos de Confirmación / Folio */
-    .success-box {
+    /* Caja del Folio Registrado */
+    .folio-result-box {
+      background: rgba(255, 255, 255, 0.9);
+      border: 2px dashed #2563eb;
+      border-radius: 16px;
+      padding: 20px;
       text-align: center;
-      animation: fadeIn 0.3s ease;
-    }
-
-    .folio-container {
-      background: linear-gradient(135deg, rgba(6, 78, 59, 0.6) 0%, rgba(15, 23, 42, 0.8) 100%);
-      border: 2px dashed #34d399;
-      border-radius: 14px;
-      padding: 24px;
-      margin: 24px 0;
-      box-shadow: 0 0 20px rgba(52, 211, 153, 0.15);
-    }
-
-    .folio-label {
-      font-size: 11px;
-      color: #a7f3d0;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      font-weight: 700;
+      margin: 20px 0;
     }
 
     .folio-code {
-      font-size: 32px;
+      font-size: 28px;
       font-weight: 900;
-      color: #38bdf8;
-      letter-spacing: 3px;
-      font-family: 'Courier New', Courier, monospace;
-      margin-top: 8px;
-      text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+      color: #1e40af;
+      letter-spacing: 2px;
+      font-family: monospace;
+      margin-top: 6px;
     }
 
-    .alert-info {
-      background: rgba(30, 41, 59, 0.7);
-      border-left: 4px solid #38bdf8;
-      padding: 12px;
-      border-radius: 6px;
-      font-size: 13px;
-      color: #cbd5e1;
-      text-align: left;
-      margin-bottom: 20px;
-      line-height: 1.4;
+    /* Caja de Estatus de Consulta */
+    .status-card {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 16px;
+      padding: 20px;
+      margin-top: 20px;
+      border-left: 6px solid #2563eb;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     }
 
-    .btn-next {
-      display: block;
-      width: 100%;
-      padding: 14px;
-      background: #0284c7;
-      color: #ffffff;
-      text-decoration: none;
-      border-radius: 10px;
+    .status-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
       font-weight: 800;
-      text-align: center;
+      font-size: 12px;
       text-transform: uppercase;
-      letter-spacing: 1px;
-      transition: background 0.2s ease;
+      margin-top: 6px;
     }
 
-    .btn-next:hover {
-      background: #0369a1;
-    }
+    .status-revision { background: #fef3c7; color: #b45309; }
+    .status-aceptado { background: #dcfce7; color: #15803d; }
+    .status-rechazado { background: #fee2e2; color: #b91c1c; }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+    .info-note {
+      background: rgba(219, 234, 254, 0.7);
+      border: 1px solid #bfdbfe;
+      border-radius: 10px;
+      padding: 12px;
+      font-size: 12px;
+      color: #1e3a8a;
+      margin-top: 14px;
+      line-height: 1.4;
     }
   </style>
 </head>
@@ -210,16 +205,19 @@
 
   <div class="card">
     
-    <!-- SECCIÓN DEL FORMULARIO -->
-    <div id="formContainer">
-      <!-- MUESTRA TU LOGO -->
+    <!-- LOGO -->
+    <div class="logo-container">
       <img src="logo.png" alt="La Casa de los Famosos Roblox" class="logo-img">
-      
-      <div style="text-align: center;">
-        <span class="badge">Registro Oficial</span>
-      </div>
-      <p class="subtitle">Llena la solicitud oficial para ser un habitante.</p>
+    </div>
 
+    <!-- PESTAÑAS -->
+    <div class="tabs">
+      <button class="tab-btn active" id="tabRegistroBtn" onclick="mostrarPestana('registro')">1. Registro</button>
+      <button class="tab-btn" id="tabConsultaBtn" onclick="mostrarPestana('consulta')">2. Consultar Estatus</button>
+    </div>
+
+    <!-- PESTAÑA 1: FORMULARIO DE REGISTRO -->
+    <div id="seccionRegistro">
       <form id="postulacionForm">
         <div class="form-group">
           <label for="roblox">Usuario de Roblox *</label>
@@ -237,34 +235,57 @@
         </div>
 
         <div class="form-group">
-          <label for="pais">País y Zona Horaria *</label>
+          <label for="pais">País / Zona Horaria *</label>
           <input type="text" id="pais" required placeholder="Ej: México (GMT-6)">
         </div>
 
         <div class="form-group">
-          <label for="motivo">¿Por qué deberías ser un habitante? *</label>
-          <textarea id="motivo" rows="3" required placeholder="Cuéntanos tu estrategia o personalidad..."></textarea>
+          <label for="motivo">¿Por qué deberías entrar? *</label>
+          <textarea id="motivo" required placeholder="Cuéntanos tu estrategia o personalidad..."></textarea>
         </div>
 
-        <button type="submit" id="btnSubmit">ENVIAR POSTULACIÓN</button>
+        <button type="submit" class="btn-primary" id="btnSubmit">Enviar Postulación</button>
       </form>
+
+      <!-- Mensaje de éxito tras registrarse -->
+      <div id="exitoRegistro" class="hidden">
+        <h3 style="color: #1e40af; text-align: center; font-size: 20px;">¡Postulación Guardada!</h3>
+        <p style="text-align: center; font-size: 13px; color: #475569; margin-top: 4px;">Guarda este código para consultar tus resultados:</p>
+        
+        <div class="folio-result-box">
+          <span style="font-size: 11px; text-transform: uppercase; color: #64748b; font-weight: 700;">Tu Folio Único</span>
+          <div class="folio-code" id="folioGenerado">LCDF-0000</div>
+        </div>
+
+        <div class="info-note">
+          📌 <strong>Importante:</strong> Toma una captura de pantalla. Puedes ir a la pestaña <strong>"Consultar Estatus"</strong> en cualquier momento para revisar si fuiste seleccionado.
+        </div>
+      </div>
     </div>
 
-    <!-- SECCIÓN DE CONFIRMACIÓN Y FOLIO (OCULTA INICIALMENTE) -->
-    <div id="confirmacionBox" class="success-box hidden">
-      <h2 style="color: #34d399; font-size: 22px; text-transform: uppercase; margin-bottom: 8px;">¡Solicitud Registrada!</h2>
-      <p style="color: #cbd5e1; font-size: 14px;">Hemos guardado tus datos correctamente en el sistema.</p>
+    <!-- PESTAÑA 2: CONSULTA DE ESTATUS POR FOLIO -->
+    <div id="seccionConsulta" class="hidden">
+      <form id="consultaForm">
+        <div class="form-group">
+          <label for="folioInput">Ingresa tu Folio *</label>
+          <input type="text" id="folioInput" required placeholder="Ej: LCDF-2026-8492" style="text-transform: uppercase;">
+        </div>
+        <button type="submit" class="btn-primary" id="btnBuscar">Buscar Folio</button>
+      </form>
 
-      <div class="folio-container">
-        <div class="folio-label">Tu Folio Único de Consulta</div>
-        <div class="folio-code" id="folioOutput">LCDF-2026-0000</div>
+      <!-- Resultado de la consulta -->
+      <div id="resultadoConsulta" class="hidden">
+        <div class="status-card">
+          <div style="font-size: 12px; color: #64748b; font-weight: 700;">USUARIO: <span id="resUsuario" style="color: #0f172a;">-</span></div>
+          <div style="margin-top: 8px;">
+            <span style="font-size: 12px; font-weight: 700; color: #1e40af;">ESTATUS:</span><br>
+            <span id="resEstatus" class="status-badge status-revision">En Revisión</span>
+          </div>
+          <div style="margin-top: 12px; font-size: 13px; color: #334155;" id="resDetalle">
+            Tu solicitud está siendo evaluada por el equipo de producción.
+          </div>
+        </div>
       </div>
-
-      <div class="alert-info">
-        📌 <strong>IMPORTANTE:</strong> Toma una captura de pantalla o anota tu folio en un lugar seguro. Lo necesitarás el día de publicación de resultados para verificar si fuiste seleccionado y conocer tu habitación.
-      </div>
-
-      <a href="resultados.html" class="btn-next">Consultar Estatus</a>
     </div>
 
   </div>
@@ -276,45 +297,109 @@
     const APPS_SCRIPT_URL = "https://script.google.com/macros/s/TU_SCRIPT_ID_AQUI/exec";
     // =========================================================================
 
+    // Cambiar entre Pestañas (Registro y Consulta)
+    function mostrarPestana(pestana) {
+      const regSection = document.getElementById('seccionRegistro');
+      const conSection = document.getElementById('seccionConsulta');
+      const tabRegBtn = document.getElementById('tabRegistroBtn');
+      const tabConBtn = document.getElementById('tabConsultaBtn');
+
+      if (pestana === 'registro') {
+        regSection.classList.remove('hidden');
+        conSection.classList.add('hidden');
+        tabRegBtn.classList.add('active');
+        tabConBtn.classList.remove('active');
+      } else {
+        regSection.classList.add('hidden');
+        conSection.classList.remove('hidden');
+        tabConBtn.classList.add('active');
+        tabRegBtn.classList.remove('active');
+      }
+    }
+
+    // Enviar Registro
     document.getElementById('postulacionForm').addEventListener('submit', async function(e) {
       e.preventDefault();
-
       const btn = document.getElementById('btnSubmit');
-      btn.innerText = "Guardando en el sistema...";
+      btn.innerText = "PROCESANDO...";
       btn.disabled = true;
 
-      // Generar Folio Único de 4 dígitos aleatorios (Ej: LCDF-2026-8492)
-      const randomNum = Math.floor(1000 + Math.random() * 9000);
-      const folioGenerado = `LCDF-2026-${randomNum}`;
+      const numAleatorio = Math.floor(1000 + Math.random() * 9000);
+      const folio = `LCDF-2026-${numAleatorio}`;
 
-      // Estructura de los datos
       const payload = {
+        action: "registro",
         roblox: document.getElementById('roblox').value.trim(),
         discord: document.getElementById('discord').value.trim(),
         edad: document.getElementById('edad').value.trim(),
         pais: document.getElementById('pais').value.trim(),
         motivo: document.getElementById('motivo').value.trim(),
-        folio: folioGenerado
+        folio: folio
       };
 
       try {
         await fetch(APPS_SCRIPT_URL, {
           method: "POST",
           mode: "no-cors",
-          headers: {
-            "Content-Type": "application/json"
-          },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload)
         });
 
-        document.getElementById('formContainer').classList.add('hidden');
-        document.getElementById('folioOutput').innerText = folioGenerado;
-        document.getElementById('confirmacionBox').classList.remove('hidden');
+        document.getElementById('postulacionForm').classList.add('hidden');
+        document.getElementById('folioGenerado').innerText = folio;
+        document.getElementById('exitoRegistro').classList.remove('hidden');
 
-      } catch (error) {
-        console.error("Error al enviar la postulación:", error);
-        alert("Ocurrió un error al procesar tu registro. Por favor intenta de nuevo.");
-        btn.innerText = "ENVIAR POSTULACIÓN";
+      } catch (err) {
+        alert("Error al conectar con el servidor.");
+        btn.innerText = "Enviar Postulación";
+        btn.disabled = false;
+      }
+    });
+
+    // Consultar Estatus
+    document.getElementById('consultaForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const folioBuscado = document.getElementById('folioInput').value.trim().toUpperCase();
+      const btn = document.getElementById('btnBuscar');
+      btn.innerText = "BUSCANDO...";
+      btn.disabled = true;
+
+      try {
+        const response = await fetch(`${APPS_SCRIPT_URL}?folio=${encodeURIComponent(folioBuscado)}`);
+        const data = await response.json();
+
+        document.getElementById('resultadoConsulta').classList.remove('hidden');
+
+        if (data.encontrado) {
+          document.getElementById('resUsuario').innerText = data.roblox;
+          const badge = document.getElementById('resEstatus');
+          const detalle = document.getElementById('resDetalle');
+
+          if (data.estatus === "Aceptado") {
+            badge.innerText = "¡SELECCIONADO!";
+            badge.className = "status-badge status-aceptado";
+            detalle.innerText = "🎉 ¡Felicidades! Has sido seleccionado como habitante. Revisa Discord para las instrucciones de acceso.";
+          } else if (data.estatus === "Rechazado") {
+            badge.innerText = "No Seleccionado";
+            badge.className = "status-badge status-rechazado";
+            detalle.innerText = "Gracias por postularte. En esta oportunidad no fuiste seleccionado.";
+          } else {
+            badge.innerText = "En Revisión";
+            badge.className = "status-badge status-revision";
+            detalle.innerText = "Tu solicitud aún está siendo evaluada por la producción.";
+          }
+        } else {
+          document.getElementById('resUsuario').innerText = "N/A";
+          const badge = document.getElementById('resEstatus');
+          badge.innerText = "No Encontrado";
+          badge.className = "status-badge status-rechazado";
+          document.getElementById('resDetalle').innerText = "El folio ingresado no existe en nuestro sistema. Verifica que esté bien escrito.";
+        }
+
+      } catch (err) {
+        alert("Ocurrió un error al consultar el folio. Intenta nuevamente.");
+      } finally {
+        btn.innerText = "Buscar Folio";
         btn.disabled = false;
       }
     });
