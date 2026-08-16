@@ -1,291 +1,1278 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>La Casa de los Famosos Roblox - Consulta</title>
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    La Casa de los Famosos Roblox - Consulta
+  </title>
+
+
   <style>
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+
+      font-family:
+        'Segoe UI',
+        system-ui,
+        -apple-system,
+        sans-serif;
     }
+
+
+    /* ==========================================
+       FONDO
+    ========================================== */
 
     body {
-      background: radial-gradient(circle at 20% 20%, #e0c3fc 0%, #8ec5fc 40%, #fbc2eb 70%, #a1c4fd 100%);
-      background-attachment: fixed;
+
       min-height: 100vh;
+
       display: flex;
+
       justify-content: center;
+
       align-items: center;
+
       padding: 20px;
+
       color: #1e293b;
+
+      background:
+
+        radial-gradient(
+          circle at 10% 10%,
+          rgba(0, 220, 255, .95) 0%,
+          rgba(0, 150, 255, .55) 18%,
+          transparent 42%
+        ),
+
+        radial-gradient(
+          circle at 90% 15%,
+          rgba(75, 80, 255, .90) 0%,
+          rgba(70, 20, 220, .55) 25%,
+          transparent 50%
+        ),
+
+        radial-gradient(
+          circle at 50% 100%,
+          rgba(0, 180, 255, .80) 0%,
+          transparent 45%
+        ),
+
+        linear-gradient(
+          135deg,
+          #020827 0%,
+          #03358f 28%,
+          #087cff 52%,
+          #1839a8 75%,
+          #08052f 100%
+        );
+
+      background-attachment: fixed;
+
     }
+
+
+    body::before {
+
+      content: "";
+
+      position: fixed;
+
+      inset: 0;
+
+      pointer-events: none;
+
+      background:
+
+        radial-gradient(
+          ellipse at center,
+          transparent 20%,
+          rgba(0, 0, 40, .40) 100%
+        );
+
+      z-index: 0;
+
+    }
+
+
+    body::after {
+
+      content: "";
+
+      position: fixed;
+
+      inset: 0;
+
+      pointer-events: none;
+
+      background:
+
+        linear-gradient(
+          115deg,
+          transparent 32%,
+          rgba(0, 230, 255, .12) 46%,
+          transparent 58%
+        ),
+
+        linear-gradient(
+          65deg,
+          transparent 35%,
+          rgba(100, 60, 255, .14) 50%,
+          transparent 65%
+        );
+
+      z-index: 0;
+
+    }
+
+
+    /* ==========================================
+       TARJETA
+    ========================================== */
 
     .card {
-      background: rgba(255, 255, 255, 0.75);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 2px solid rgba(255, 255, 255, 0.9);
-      border-radius: 24px;
-      max-width: 520px;
+
+      position: relative;
+
+      z-index: 2;
+
       width: 100%;
+
+      max-width: 520px;
+
       padding: 28px;
-      box-shadow: 0 20px 40px rgba(37, 99, 235, 0.15), 0 10px 25px rgba(147, 51, 234, 0.1);
+
+      background:
+        rgba(255, 255, 255, .95);
+
+      backdrop-filter:
+        blur(20px);
+
+      -webkit-backdrop-filter:
+        blur(20px);
+
+      border:
+        2px solid
+        rgba(255, 255, 255, .9);
+
+      border-radius:
+        28px;
+
+      box-shadow:
+
+        0 30px 80px
+        rgba(0, 0, 0, .40),
+
+        0 0 40px
+        rgba(0, 200, 255, .35);
+
     }
+
+
+    /* ==========================================
+       LOGO
+    ========================================== */
 
     .logo-container {
+
       text-align: center;
-      margin-bottom: 16px;
+
+      margin-bottom: 18px;
+
     }
+
 
     .logo-img {
+
       width: 100%;
-      max-width: 240px;
+
+      max-width: 260px;
+
       height: auto;
-      filter: drop-shadow(0 8px 16px rgba(37, 99, 235, 0.3));
+
+      display: inline-block;
+
+      filter:
+
+        drop-shadow(
+          0 8px 12px
+          rgba(0, 0, 0, .30)
+        )
+
+        drop-shadow(
+          0 0 20px
+          rgba(0, 190, 255, .35)
+        );
+
+      transition:
+        transform .3s ease;
+
     }
+
+
+    .logo-img:hover {
+
+      transform:
+        scale(1.03);
+
+    }
+
+
+    /* ==========================================
+       NAVEGACIÓN
+    ========================================== */
 
     .nav-buttons {
+
       display: flex;
+
       gap: 10px;
+
       margin-bottom: 24px;
+
     }
+
 
     .nav-link {
+
       flex: 1;
+
       text-align: center;
-      padding: 10px;
+
+      padding: 11px 8px;
+
       border-radius: 12px;
+
       text-decoration: none;
+
       font-weight: 800;
-      font-size: 12px;
+
+      font-size: 11px;
+
       text-transform: uppercase;
-      transition: all 0.2s ease;
+
+      transition: .2s ease;
+
     }
+
 
     .nav-link.active {
-      background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 50%, #3b82f6 100%);
-      color: #ffffff;
-      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+
+      background:
+
+        linear-gradient(
+          135deg,
+          #005bea,
+          #087cff,
+          #00bfff
+        );
+
+      color: white;
+
+      box-shadow:
+
+        0 5px 14px
+        rgba(37, 99, 235, .35);
+
     }
+
 
     .nav-link.inactive {
-      background: rgba(255, 255, 255, 0.6);
-      color: #475569;
-      border: 1px solid rgba(255, 255, 255, 0.8);
+
+      background:
+        rgba(255, 255, 255, .65);
+
+      color:
+        #475569;
+
+      border:
+        1px solid
+        rgba(255, 255, 255, .8);
+
     }
+
 
     .nav-link.inactive:hover {
-      background: rgba(255, 255, 255, 0.9);
-      color: #1e40af;
+
+      background:
+        white;
+
+      color:
+        #1e40af;
+
+      transform:
+        translateY(-1px);
+
     }
+
+
+    /* ==========================================
+       FORMULARIO
+    ========================================== */
 
     .form-group {
-      margin-bottom: 16px;
+
+      margin-bottom:
+        16px;
+
     }
+
 
     label {
+
       display: block;
-      font-size: 12px;
-      font-weight: 800;
-      color: #1e40af;
-      margin-bottom: 6px;
-      text-transform: uppercase;
+
+      font-size:
+        12px;
+
+      font-weight:
+        800;
+
+      color:
+        #1e40af;
+
+      margin-bottom:
+        7px;
+
+      text-transform:
+        uppercase;
+
     }
+
 
     input {
+
       width: 100%;
-      padding: 12px 16px;
-      background: rgba(255, 255, 255, 0.9);
-      border: 2px solid #cbd5e1;
-      border-radius: 12px;
-      color: #0f172a;
-      font-size: 14px;
-      outline: none;
-      transition: all 0.2s ease;
+
+      padding:
+        14px 16px;
+
+      background:
+        rgba(255, 255, 255, .95);
+
+      border:
+        2px solid
+        #cbd5e1;
+
+      border-radius:
+        12px;
+
+      color:
+        #0f172a;
+
+      font-size:
+        14px;
+
+      outline:
+        none;
+
+      text-transform:
+        uppercase;
+
+      transition:
+        .2s ease;
+
     }
+
 
     input:focus {
-      border-color: #2563eb;
-      background: #ffffff;
-      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+
+      border-color:
+        #2563eb;
+
+      background:
+        white;
+
+      box-shadow:
+
+        0 0 0 4px
+        rgba(37, 99, 235, .15);
+
     }
+
+
+    /* ==========================================
+       BOTÓN
+    ========================================== */
 
     .btn-primary {
+
       width: 100%;
-      padding: 14px;
-      background: linear-gradient(135deg, #1e40af 0%, #2563eb 50%, #3b82f6 100%);
-      color: #ffffff;
-      font-weight: 800;
-      font-size: 15px;
-      border: none;
-      border-radius: 12px;
-      cursor: pointer;
-      text-transform: uppercase;
-      margin-top: 8px;
-      box-shadow: 0 6px 18px rgba(37, 99, 235, 0.35);
-      transition: all 0.2s ease;
+
+      padding:
+        15px;
+
+      background:
+
+        linear-gradient(
+          135deg,
+          #005bea,
+          #087cff,
+          #00bfff
+        );
+
+      color:
+        white;
+
+      font-weight:
+        900;
+
+      font-size:
+        14px;
+
+      border:
+        none;
+
+      border-radius:
+        13px;
+
+      cursor:
+        pointer;
+
+      text-transform:
+        uppercase;
+
+      margin-top:
+        8px;
+
+      box-shadow:
+
+        0 8px 20px
+        rgba(37, 99, 235, .35);
+
+      transition:
+        .2s ease;
+
     }
 
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 22px rgba(37, 99, 235, 0.45);
+
+    .btn-primary:hover:not(:disabled) {
+
+      transform:
+        translateY(-2px);
+
+      box-shadow:
+
+        0 12px 26px
+        rgba(37, 99, 235, .45);
+
     }
+
 
     .btn-primary:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-      transform: none;
+
+      opacity:
+        .6;
+
+      cursor:
+        not-allowed;
+
     }
+
+
+    /* ==========================================
+       RESULTADO
+    ========================================== */
 
     .resultado-box {
-      background: rgba(255, 255, 255, 0.9);
-      border: 2px solid #2563eb;
-      border-radius: 16px;
-      padding: 20px;
-      margin-top: 20px;
-      text-align: center;
+
+      background:
+        rgba(255, 255, 255, .95);
+
+      border:
+        2px solid
+        #2563eb;
+
+      border-radius:
+        17px;
+
+      padding:
+        22px;
+
+      margin-top:
+        20px;
+
+      text-align:
+        center;
+
+      animation:
+        aparecer .4s ease;
+
     }
+
+
+    @keyframes aparecer {
+
+      from {
+
+        opacity: 0;
+
+        transform:
+          translateY(10px);
+
+      }
+
+      to {
+
+        opacity: 1;
+
+        transform:
+          translateY(0);
+
+      }
+
+    }
+
 
     .hidden {
-      display: none;
+
+      display:
+        none !important;
+
     }
+
+
+    /* ==========================================
+       FOLIO MOSTRADO
+    ========================================== */
+
+    .folio-mostrado {
+
+      margin-top:
+        12px;
+
+      font-size:
+        18px;
+
+      font-weight:
+        900;
+
+      color:
+        #1e40af;
+
+      letter-spacing:
+        1px;
+
+    }
+
+
+    /* ==========================================
+       ESTADOS
+    ========================================== */
 
     .estado-badge {
-      display: inline-block;
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-weight: 800;
-      font-size: 13px;
-      text-transform: uppercase;
-      margin-top: 10px;
+
+      display:
+        inline-block;
+
+      padding:
+        7px 16px;
+
+      border-radius:
+        20px;
+
+      font-weight:
+        900;
+
+      font-size:
+        12px;
+
+      text-transform:
+        uppercase;
+
+      margin-top:
+        12px;
+
     }
 
-    .estado-aceptado { background: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
-    .estado-rechazado { background: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
-    .estado-pendiente { background: #fef9c3; color: #854d0e; border: 1px solid #fef08a; }
+
+    .estado-aceptado {
+
+      background:
+        #dcfce7;
+
+      color:
+        #166534;
+
+      border:
+        1px solid
+        #bbf7d0;
+
+    }
+
+
+    .estado-rechazado {
+
+      background:
+        #fee2e2;
+
+      color:
+        #991b1b;
+
+      border:
+        1px solid
+        #fecaca;
+
+    }
+
+
+    .estado-pendiente {
+
+      background:
+        #fef9c3;
+
+      color:
+        #854d0e;
+
+      border:
+        1px solid
+        #fef08a;
+
+    }
+
+
+    /* ==========================================
+       BOTÓN SECUNDARIO
+    ========================================== */
 
     .btn-secondary {
-      display: block;
-      width: 100%;
-      text-align: center;
-      padding: 12px;
-      background: #ffffff;
-      color: #1e40af;
-      border: 2px solid #93c5fd;
-      border-radius: 12px;
-      font-weight: 800;
-      font-size: 13px;
-      text-transform: uppercase;
-      text-decoration: none;
-      margin-top: 16px;
-      transition: all 0.2s ease;
+
+      display:
+        block;
+
+      width:
+        100%;
+
+      text-align:
+        center;
+
+      padding:
+        12px;
+
+      background:
+        transparent;
+
+      color:
+        #64748b;
+
+      border:
+        none;
+
+      border-radius:
+        12px;
+
+      font-weight:
+        800;
+
+      font-size:
+        12px;
+
+      text-transform:
+        uppercase;
+
+      text-decoration:
+        none;
+
+      margin-top:
+        15px;
+
+      transition:
+        .2s ease;
+
     }
+
 
     .btn-secondary:hover {
-      background: #f0f9ff;
-      border-color: #2563eb;
+
+      color:
+        #1e40af;
+
+      background:
+        rgba(255,255,255,.5);
+
     }
+
+
+    /* ==========================================
+       ERROR
+    ========================================== */
+
+    .error {
+
+      margin-top:
+        15px;
+
+      padding:
+        12px;
+
+      border-radius:
+        10px;
+
+      background:
+        #fee2e2;
+
+      border:
+        1px solid
+        #fecaca;
+
+      color:
+        #991b1b;
+
+      text-align:
+        center;
+
+      font-size:
+        12px;
+
+      font-weight:
+        700;
+
+    }
+
+
+    /* ==========================================
+       MÓVIL
+    ========================================== */
+
+    @media (max-width: 600px) {
+
+      body {
+
+        padding:
+          15px;
+
+      }
+
+
+      .card {
+
+        padding:
+          22px 17px;
+
+        border-radius:
+          22px;
+
+      }
+
+
+      .nav-link {
+
+        font-size:
+          10px;
+
+      }
+
+
+      .logo-img {
+
+        max-width:
+          230px;
+
+      }
+
+    }
+
   </style>
+
 </head>
+
+
 <body>
 
-  <div class="card">
+
+  <main class="card">
+
+
+    <!-- LOGO -->
+
     <div class="logo-container">
+
       <a href="index.html">
-        <img src="logo.png" alt="La Casa de los Famosos Roblox" class="logo-img">
+
+        <img
+          src="logo.png"
+          alt="La Casa de los Famosos Roblox"
+          class="logo-img"
+        >
+
       </a>
+
     </div>
 
-    <!-- Menú Superior de Navegación -->
+
+    <!-- NAVEGACIÓN -->
+
     <div class="nav-buttons">
-      <a href="index.html" class="nav-link inactive">🏠 Inicio</a>
-      <a href="registro.html" class="nav-link inactive">📝 Registro</a>
-      <a href="consulta.html" class="nav-link active">🔍 Consulta</a>
+
+      <a
+        href="index.html"
+        class="nav-link inactive"
+      >
+        🏠 Inicio
+      </a>
+
+      <a
+        href="registro.html"
+        class="nav-link inactive"
+      >
+        📝 Registro
+      </a>
+
+      <a
+        href="consulta.html"
+        class="nav-link active"
+      >
+        🔍 Consulta
+      </a>
+
     </div>
 
-    <!-- Formulario de Consulta -->
+
+    <!-- FORMULARIO -->
+
     <form id="consultaForm">
+
       <div class="form-group">
-        <label for="folioInput">Ingresa tu Folio Único *</label>
-        <input type="text" id="folioInput" required placeholder="Ej: LCDF-2026-1234">
+
+        <label for="folioInput">
+          Ingresa tu Folio Único
+        </label>
+
+        <input
+          type="text"
+          id="folioInput"
+          required
+          autocomplete="off"
+          placeholder="Ej. LCDF-A7K29P"
+        >
+
       </div>
 
-      <button type="submit" class="btn-primary" id="btnConsultar">Consultar Estado</button>
+
+      <button
+        type="submit"
+        class="btn-primary"
+        id="btnConsultar"
+      >
+
+        🔍 CONSULTAR ESTADO
+
+      </button>
+
     </form>
 
-    <!-- Resultado de la Consulta -->
-    <div id="resultadoConsulta" class="resultado-box hidden">
-      <h3 style="color: #1e40af; font-size: 18px; margin-bottom: 6px;">Resultado de Postulación</h3>
-      <p id="infoRoblox" style="font-size: 14px; color: #475569; font-weight: 600;"></p>
-      <div id="badgeEstado" class="estado-badge">PENDIENTE</div>
+
+    <!-- ERROR -->
+
+    <div
+      id="errorConsulta"
+      class="error hidden"
+    ></div>
+
+
+    <!-- RESULTADO -->
+
+    <div
+      id="resultadoConsulta"
+      class="resultado-box hidden"
+    >
+
+      <h3
+        style="
+          color:#1e40af;
+          font-size:18px;
+          margin-bottom:8px;
+        "
+      >
+
+        Resultado de Postulación
+
+      </h3>
+
+
+      <p
+        id="infoRoblox"
+        style="
+          font-size:14px;
+          color:#475569;
+          font-weight:600;
+        "
+      ></p>
+
+
+      <div
+        id="folioMostrado"
+        class="folio-mostrado"
+      ></div>
+
+
+      <div
+        id="badgeEstado"
+        class="estado-badge"
+      >
+        PENDIENTE
+      </div>
+
+
     </div>
 
-    <a href="index.html" class="btn-secondary" style="border: none; background: transparent; color: #64748b;">Volver al Menú Principal</a>
-  </div>
+
+    <!-- VOLVER -->
+
+    <a
+      href="index.html"
+      class="btn-secondary"
+    >
+
+      ← Volver al Menú Principal
+
+    </a>
+
+
+  </main>
+
+
 
   <script>
-    const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbySGTYGtGeRK7GN4SJJbGLPco_8XxuOxhrnRKzeNWYBXG07TIWtqnsTRHPrqBy-LzXg1Q/exec";
 
-    document.getElementById('consultaForm').addEventListener('submit', async function(e) {
-      e.preventDefault();
-      const btn = document.getElementById('btnConsultar');
-      const folio = document.getElementById('folioInput').value.trim();
-      
-      btn.innerText = "BUSCANDO...";
-      btn.disabled = true;
 
-      const payload = {
-        action: "consulta",
-        folio: folio
-      };
+    /* =================================================
+       URL DE TU GOOGLE APPS SCRIPT
+    ================================================= */
 
-      try {
-        const response = await fetch(APPS_SCRIPT_URL, {
-          method: "POST",
-          headers: { "Content-Type": "text/plain;charset=utf-8" },
-          body: JSON.stringify(payload)
-        });
+    const APPS_SCRIPT_URL =
+      "https://script.google.com/macros/s/AKfycbyzo1clYek057TW8mjUc1psZRnqOqRmjgAYDpi5ADFv8P-rFiethF_MmoRrxkoReMacrA/exec";
 
-        const result = await response.json();
-        const resultadoDiv = document.getElementById('resultadoConsulta');
-        const badge = document.getElementById('badgeEstado');
-        const info = document.getElementById('infoRoblox');
 
-        if (result.success) {
-          info.innerText = `Roblox: ${result.roblox}`;
-          
-          badge.className = "estado-badge";
-          const estado = (result.estado || "Pendiente").toLowerCase();
 
-          if (estado.includes("aceptado")) {
-            badge.classList.add("estado-aceptado");
-            badge.innerText = "¡ACEPTADO!";
-          } else if (estado.includes("rechazado")) {
-            badge.classList.add("estado-rechazado");
-            badge.innerText = "NO SELECCIONADO";
-          } else {
-            badge.classList.add("estado-pendiente");
-            badge.innerText = "EN REVISIÓN / PENDIENTE";
-          }
+    /* =================================================
+       ELEMENTOS
+    ================================================= */
 
-          resultadoDiv.classList.remove('hidden');
-        } else {
-          alert(result.error || "No se encontró ningún registro con ese folio.");
-          resultadoDiv.classList.add('hidden');
+    const form =
+      document.getElementById(
+        "consultaForm"
+      );
+
+
+    const btn =
+      document.getElementById(
+        "btnConsultar"
+      );
+
+
+    const input =
+      document.getElementById(
+        "folioInput"
+      );
+
+
+    const resultado =
+      document.getElementById(
+        "resultadoConsulta"
+      );
+
+
+    const info =
+      document.getElementById(
+        "infoRoblox"
+      );
+
+
+    const badge =
+      document.getElementById(
+        "badgeEstado"
+      );
+
+
+    const folioMostrado =
+      document.getElementById(
+        "folioMostrado"
+      );
+
+
+    const errorDiv =
+      document.getElementById(
+        "errorConsulta"
+      );
+
+
+
+    /* =================================================
+       CONSULTAR
+    ================================================= */
+
+    form.addEventListener(
+      "submit",
+      async function(e) {
+
+        e.preventDefault();
+
+
+        const folio =
+          input.value
+            .trim()
+            .toUpperCase();
+
+
+        if (!folio) {
+
+          mostrarError(
+            "Escribe tu folio."
+          );
+
+          return;
+
         }
 
-      } catch (err) {
-        console.error(err);
-        alert("Error al conectar con el servidor. Intenta nuevamente.");
-      } finally {
-        btn.innerText = "Consultar Estado";
-        btn.disabled = false;
+
+        resultado
+          .classList
+          .add("hidden");
+
+
+        errorDiv
+          .classList
+          .add("hidden");
+
+
+        btn.disabled =
+          true;
+
+        btn.textContent =
+          "BUSCANDO...";
+
+
+        try {
+
+
+          const response =
+            await fetch(
+              APPS_SCRIPT_URL,
+              {
+
+                method:
+                  "POST",
+
+                headers: {
+                  "Content-Type":
+                    "text/plain;charset=utf-8"
+                },
+
+                body:
+                  JSON.stringify({
+
+                    action:
+                      "consulta",
+
+                    folio:
+                      folio
+
+                  })
+
+              }
+            );
+
+
+          const result =
+            await response.json();
+
+
+          console.log(
+            "Respuesta:",
+            result
+          );
+
+
+          if (
+            result.success &&
+            result.encontrado
+          ) {
+
+
+            /* =========================================
+               FOLIO
+            ========================================= */
+
+            folioMostrado.textContent =
+              result.folio ||
+              folio;
+
+
+            /* =========================================
+               ROBLOX
+            ========================================= */
+
+            info.textContent =
+              result.roblox
+                ? `🎮 Roblox: ${result.roblox}`
+                : "";
+
+
+            /* =========================================
+               ESTADO
+            ========================================= */
+
+            const estado =
+              String(
+                result.estado ||
+                "Pendiente"
+              )
+              .trim()
+              .toLowerCase();
+
+
+            badge.className =
+              "estado-badge";
+
+
+            if (
+              estado.includes(
+                "seleccionado"
+              ) ||
+              estado.includes(
+                "aceptado"
+              )
+            ) {
+
+              badge.classList.add(
+                "estado-aceptado"
+              );
+
+              badge.textContent =
+                "🎉 ¡SELECCIONADO!";
+
+            }
+
+            else if (
+              estado.includes(
+                "no seleccionado"
+              ) ||
+              estado.includes(
+                "rechazado"
+              )
+            ) {
+
+              badge.classList.add(
+                "estado-rechazado"
+              );
+
+              badge.textContent =
+                "NO SELECCIONADO";
+
+            }
+
+            else {
+
+              badge.classList.add(
+                "estado-pendiente"
+              );
+
+              badge.textContent =
+                "⏳ PENDIENTE";
+
+            }
+
+
+            resultado
+              .classList
+              .remove("hidden");
+
+
+          }
+
+          else {
+
+            mostrarError(
+              result.mensaje ||
+              result.error ||
+              "No encontramos ese folio."
+            );
+
+          }
+
+
+        }
+
+        catch(error) {
+
+          console.error(
+            error
+          );
+
+
+          mostrarError(
+            "No se pudo conectar con el servidor. Revisa que Apps Script esté publicado correctamente."
+          );
+
+        }
+
+
+        finally {
+
+          btn.disabled =
+            false;
+
+          btn.textContent =
+            "🔍 CONSULTAR ESTADO";
+
+        }
+
       }
-    });
+    );
+
+
+
+    /* =================================================
+       MOSTRAR ERROR
+    ================================================= */
+
+    function mostrarError(
+      texto
+    ) {
+
+      errorDiv.textContent =
+        texto;
+
+      errorDiv
+        .classList
+        .remove("hidden");
+
+    }
+
+
+    /* =================================================
+       MAYÚSCULAS AUTOMÁTICAS
+    ================================================= */
+
+    input.addEventListener(
+      "input",
+      function() {
+
+        input.value =
+          input.value
+            .toUpperCase();
+
+      }
+    );
+
+
   </script>
+
+
 </body>
+
 </html>
            
