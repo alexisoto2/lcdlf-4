@@ -2,523 +2,1907 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Registro oficial de La Casa de los Famosos Roblox">
+
+  <meta
+    name="description"
+    content="Registro de La Casa de los Famosos Roblox"
+  >
+
   <title>La Casa de los Famosos Roblox | Registro</title>
+
+
   <style>
+
     /* =====================================================
-        CONFIGURACIÓN GENERAL
+       CONFIGURACIÓN GENERAL
     ===================================================== */
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
+
     :root {
       --azul: #087cff;
-      --azul-claro: #00c8ff;
+      --azul-claro: #00d9ff;
       --azul-oscuro: #063b9e;
-      --azul-profundo: #031b52;
+      --azul-profundo: #020b2e;
+
       --blanco: #ffffff;
       --negro: #0f172a;
+
       --gris: #64748b;
       --gris-claro: #e2e8f0;
+
       --verde: #16a34a;
       --rojo: #dc2626;
     }
 
-    body {
-      min-height: 100vh;
-      font-family: Arial, Helvetica, sans-serif;
-      color: var(--negro);
-      background:
-        radial-gradient(circle at 10% 10%, rgba(0, 200, 255, .35), transparent 35%),
-        radial-gradient(circle at 90% 20%, rgba(120, 40, 255, .40), transparent 35%),
-        radial-gradient(circle at 50% 100%, rgba(0, 90, 255, .35), transparent 40%),
-        linear-gradient(135deg, #031b52, #075bc7, #431a91);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 30px 15px;
-      overflow-x: hidden;
+
+    html {
+      scroll-behavior: smooth;
     }
 
-    /* =====================================================
-        TARJETA PRINCIPAL
-    ===================================================== */
-    .card {
-      position: relative;
-      z-index: 2;
-      width: 100%;
-      max-width: 540px;
-      background: rgba(255, 255, 255, .96);
-      border: 1px solid rgba(255, 255, 255, .8);
-      border-radius: 28px;
-      padding: 30px;
-      box-shadow: 0 30px 80px rgba(0, 0, 0, .40), 0 0 40px rgba(0, 150, 255, .25);
-      animation: aparecer .6s ease;
+
+    body {
+
+      min-height: 100vh;
+
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+      color: var(--negro);
+
+      display: flex;
+
+      justify-content: center;
+
+      align-items: center;
+
+      padding: 30px 15px;
+
+      overflow-x: hidden;
+
+
+      /* =================================================
+         FONDO ESTILO DEL LOGO
+      ================================================= */
+
+      background:
+
+        radial-gradient(
+          circle at 10% 10%,
+          rgba(0, 225, 255, .95) 0%,
+          rgba(0, 160, 255, .55) 17%,
+          transparent 42%
+        ),
+
+        radial-gradient(
+          circle at 90% 15%,
+          rgba(70, 80, 255, .90) 0%,
+          rgba(70, 20, 220, .55) 25%,
+          transparent 50%
+        ),
+
+        radial-gradient(
+          circle at 50% 100%,
+          rgba(0, 180, 255, .80) 0%,
+          transparent 45%
+        ),
+
+        linear-gradient(
+          135deg,
+          #020827 0%,
+          #032f87 25%,
+          #087cff 50%,
+          #1839a8 72%,
+          #08052f 100%
+        );
+
     }
+
+
+    /* =====================================================
+       LUCES DEL FONDO
+    ===================================================== */
+
+    body::before {
+
+      content: "";
+
+      position: fixed;
+
+      inset: 0;
+
+      pointer-events: none;
+
+      background:
+
+        radial-gradient(
+          ellipse at center,
+          transparent 20%,
+          rgba(0, 0, 40, .40) 100%
+        );
+
+      z-index: 0;
+
+    }
+
+
+    body::after {
+
+      content: "";
+
+      position: fixed;
+
+      inset: 0;
+
+      pointer-events: none;
+
+      background:
+
+        linear-gradient(
+          115deg,
+          transparent 32%,
+          rgba(0, 230, 255, .10) 46%,
+          transparent 58%
+        ),
+
+        linear-gradient(
+          65deg,
+          transparent 35%,
+          rgba(100, 60, 255, .14) 50%,
+          transparent 65%
+        );
+
+      z-index: 0;
+
+    }
+
+
+    /* =====================================================
+       TARJETA
+    ===================================================== */
+
+    .card {
+
+      position: relative;
+
+      z-index: 2;
+
+      width: 100%;
+
+      max-width: 540px;
+
+      background:
+        rgba(255, 255, 255, .97);
+
+      border:
+        2px solid
+        rgba(255, 255, 255, .85);
+
+      border-radius: 28px;
+
+      padding: 30px;
+
+      box-shadow:
+
+        0 30px 80px
+        rgba(0, 0, 0, .45),
+
+        0 0 40px
+        rgba(0, 200, 255, .35);
+
+      animation:
+        aparecer .6s ease;
+
+    }
+
 
     @keyframes aparecer {
+
       from {
+
         opacity: 0;
-        transform: translateY(30px) scale(.96);
+
+        transform:
+          translateY(30px)
+          scale(.96);
+
       }
+
       to {
+
         opacity: 1;
-        transform: translateY(0) scale(1);
+
+        transform:
+          translateY(0)
+          scale(1);
+
       }
+
     }
 
+
     /* =====================================================
-        APARTADO DEL LOGO
+       APARTADO EXCLUSIVO DEL LOGO
     ===================================================== */
-    .logo-container {
+
+    .logo-section {
+
       width: 100%;
+
       display: flex;
-      justify-content: center;
+
+      flex-direction: column;
+
       align-items: center;
+
+      justify-content: center;
+
+      margin-bottom: 20px;
+
       padding: 5px;
-      margin-bottom: 18px;
-      overflow: hidden;
+
     }
+
+
+    .logo-title {
+
+      width: 100%;
+
+      text-align: center;
+
+      margin-bottom: 8px;
+
+      color:
+        #64748b;
+
+      font-size: 9px;
+
+      font-weight: 800;
+
+      letter-spacing: 2px;
+
+      text-transform: uppercase;
+
+    }
+
+
+    .logo-box {
+
+      width: 100%;
+
+      max-width: 430px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      padding: 8px;
+
+    }
+
 
     .logo {
+
       width: 100%;
-      max-width: 430px;
+
+      max-width: 420px;
+
       height: auto;
+
       display: block;
+
       object-fit: contain;
-      filter: drop-shadow(0 8px 10px rgba(0, 0, 0, .35)) drop-shadow(0 0 18px rgba(0, 150, 255, .30));
-      transition: transform .3s ease;
+
+      filter:
+
+        drop-shadow(
+          0 8px 10px
+          rgba(0, 0, 0, .35)
+        )
+
+        drop-shadow(
+          0 0 20px
+          rgba(0, 170, 255, .35)
+        );
+
+      transition:
+        transform .3s ease;
+
     }
+
 
     .logo:hover {
-      transform: scale(1.025);
+
+      transform:
+        scale(1.025);
+
     }
 
+
     /* =====================================================
-        TITULOS
+       TITULO
     ===================================================== */
+
     .titulo {
+
       text-align: center;
-      color: var(--azul-oscuro);
+
+      color:
+        var(--azul-oscuro);
+
       font-size: 26px;
+
       font-weight: 900;
+
       margin-bottom: 8px;
+
     }
+
 
     .subtitulo {
+
       text-align: center;
-      color: var(--gris);
+
+      color:
+        var(--gris);
+
       font-size: 13px;
+
       line-height: 1.6;
+
       margin-bottom: 25px;
+
     }
 
+
     /* =====================================================
-        CAMPOS
+       CAMPOS
     ===================================================== */
+
     .campo {
+
       margin-bottom: 16px;
+
     }
+
 
     .campo label {
+
       display: block;
+
       margin-bottom: 7px;
-      color: #334155;
+
+      color:
+        #334155;
+
       font-size: 12px;
+
       font-weight: 800;
+
     }
 
-    input, textarea {
+
+    input,
+    textarea {
+
       width: 100%;
-      padding: 14px 15px;
-      border: 2px solid var(--gris-claro);
-      border-radius: 13px;
-      background: #f8fafc;
-      color: var(--negro);
-      font-family: inherit;
-      font-size: 14px;
-      outline: none;
-      transition: .2s ease;
+
+      padding:
+        14px 15px;
+
+      border:
+        2px solid
+        var(--gris-claro);
+
+      border-radius:
+        13px;
+
+      background:
+        #f8fafc;
+
+      color:
+        var(--negro);
+
+      font-family:
+        inherit;
+
+      font-size:
+        14px;
+
+      outline:
+        none;
+
+      transition:
+        .2s ease;
+
     }
 
-    input:focus, textarea:focus {
-      background: #ffffff;
-      border-color: var(--azul);
-      box-shadow: 0 0 0 4px rgba(37, 99, 235, .12);
+
+    input:focus,
+    textarea:focus {
+
+      background:
+        #ffffff;
+
+      border-color:
+        var(--azul);
+
+      box-shadow:
+
+        0 0 0 4px
+        rgba(37, 99, 235, .12);
+
     }
 
-    input::placeholder, textarea::placeholder {
-      color: #94a3b8;
+
+    input::placeholder,
+    textarea::placeholder {
+
+      color:
+        #94a3b8;
+
     }
+
 
     textarea {
-      min-height: 130px;
-      resize: vertical;
+
+      min-height:
+        130px;
+
+      resize:
+        vertical;
+
     }
 
+
     /* =====================================================
-        BOTÓN
+       CONTADOR DEL MOTIVO
     ===================================================== */
-    .btn-primary {
-      width: 100%;
-      padding: 16px;
-      margin-top: 5px;
-      border: none;
-      border-radius: 14px;
-      background: linear-gradient(135deg, #006eff, #00a2ff, #0755d8);
-      color: white;
-      font-family: inherit;
-      font-size: 14px;
-      font-weight: 900;
-      letter-spacing: .5px;
-      cursor: pointer;
-      box-shadow: 0 9px 22px rgba(0, 100, 255, .30);
-      transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease;
+
+    .contador {
+
+      text-align:
+        right;
+
+      margin-top:
+        4px;
+
+      color:
+        #94a3b8;
+
+      font-size:
+        10px;
+
     }
+
+
+    /* =====================================================
+       BOTÓN PRINCIPAL
+    ===================================================== */
+
+    .btn-primary {
+
+      width:
+        100%;
+
+      padding:
+        16px;
+
+      margin-top:
+        5px;
+
+      border:
+        none;
+
+      border-radius:
+        14px;
+
+      background:
+
+        linear-gradient(
+          135deg,
+          #006eff,
+          #00bfff,
+          #0755d8
+        );
+
+      color:
+        white;
+
+      font-family:
+        inherit;
+
+      font-size:
+        14px;
+
+      font-weight:
+        900;
+
+      letter-spacing:
+        .5px;
+
+      cursor:
+        pointer;
+
+      box-shadow:
+
+        0 9px 22px
+        rgba(0, 100, 255, .30);
+
+      transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        opacity .2s ease;
+
+    }
+
 
     .btn-primary:hover:not(:disabled) {
-      transform: translateY(-2px);
-      box-shadow: 0 13px 28px rgba(0, 100, 255, .40);
+
+      transform:
+        translateY(-2px);
+
+      box-shadow:
+
+        0 13px 30px
+        rgba(0, 100, 255, .40);
+
     }
+
+
+    .btn-primary:active:not(:disabled) {
+
+      transform:
+        translateY(0);
+
+    }
+
 
     .btn-primary:disabled {
-      opacity: .65;
-      cursor: not-allowed;
+
+      opacity:
+        .65;
+
+      cursor:
+        not-allowed;
+
     }
 
+
     /* =====================================================
-        MENSAJES
+       MENSAJES
     ===================================================== */
+
     .mensaje {
-      display: none;
-      padding: 12px 14px;
-      margin-bottom: 16px;
-      border-radius: 10px;
-      font-size: 13px;
-      font-weight: 700;
-      text-align: center;
+
+      display:
+        none;
+
+      padding:
+        12px 14px;
+
+      margin-bottom:
+        16px;
+
+      border-radius:
+        10px;
+
+      font-size:
+        13px;
+
+      font-weight:
+        700;
+
+      text-align:
+        center;
+
     }
+
 
     .mensaje.error {
-      display: block;
-      background: #fee2e2;
-      color: #991b1b;
-      border: 1px solid #fecaca;
+
+      display:
+        block;
+
+      background:
+        #fee2e2;
+
+      color:
+        #991b1b;
+
+      border:
+        1px solid
+        #fecaca;
+
     }
 
-    /* =====================================================
-        PANTALLA DE ÉXITO
-    ===================================================== */
-    .hidden {
-      display: none !important;
+
+    .mensaje.exito {
+
+      display:
+        block;
+
+      background:
+        #dcfce7;
+
+      color:
+        #166534;
+
+      border:
+        1px solid
+        #bbf7d0;
+
     }
+
+
+    /* =====================================================
+       PANTALLA DE ÉXITO
+    ===================================================== */
+
+    .hidden {
+
+      display:
+        none !important;
+
+    }
+
 
     .exito {
-      text-align: center;
+
+      text-align:
+        center;
+
     }
+
 
     .check {
-      width: 78px;
-      height: 78px;
-      margin: 0 auto 18px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #22c55e, #15803d);
-      color: white;
-      font-size: 40px;
-      font-weight: 900;
-      box-shadow: 0 10px 25px rgba(22, 163, 74, .30);
+
+      width:
+        78px;
+
+      height:
+        78px;
+
+      margin:
+        0 auto 18px;
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        center;
+
+      border-radius:
+        50%;
+
+      background:
+
+        linear-gradient(
+          135deg,
+          #22c55e,
+          #15803d
+        );
+
+      color:
+        white;
+
+      font-size:
+        40px;
+
+      font-weight:
+        900;
+
+      box-shadow:
+
+        0 10px 25px
+        rgba(22, 163, 74, .30);
+
     }
+
 
     .exito h2 {
-      color: var(--azul-oscuro);
-      font-size: 25px;
-      font-weight: 900;
-      margin-bottom: 9px;
+
+      color:
+        var(--azul-oscuro);
+
+      font-size:
+        25px;
+
+      font-weight:
+        900;
+
+      margin-bottom:
+        9px;
+
     }
+
 
     .exito-texto {
-      color: var(--gris);
-      font-size: 13px;
-      line-height: 1.6;
+
+      color:
+        var(--gris);
+
+      font-size:
+        13px;
+
+      line-height:
+        1.6;
+
     }
 
+
     /* =====================================================
-        FOLIO
+       FOLIO
     ===================================================== */
+
     .folio-result-box {
-      margin: 22px 0;
-      padding: 22px;
-      background: linear-gradient(135deg, #eff6ff, #dbeafe);
-      border: 2px dashed var(--azul);
-      border-radius: 18px;
+
+      margin:
+        22px 0;
+
+      padding:
+        22px;
+
+      background:
+
+        linear-gradient(
+          135deg,
+          #eff6ff,
+          #dbeafe
+        );
+
+      border:
+        2px dashed
+        var(--azul);
+
+      border-radius:
+        18px;
+
+      box-shadow:
+        0 8px 20px
+        rgba(37, 99, 235, .10);
+
     }
+
 
     .folio-label {
-      color: #64748b;
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 1px;
+
+      color:
+        #64748b;
+
+      font-size:
+        11px;
+
+      font-weight:
+        800;
+
+      letter-spacing:
+        1px;
+
     }
+
 
     .folio-code {
-      margin-top: 8px;
-      color: #1e40af;
-      font-size: 30px;
-      font-weight: 900;
-      letter-spacing: 1px;
-      word-break: break-word;
+
+      margin-top:
+        8px;
+
+      color:
+        #1e40af;
+
+      font-size:
+        30px;
+
+      font-weight:
+        900;
+
+      letter-spacing:
+        1px;
+
+      word-break:
+        break-word;
+
     }
+
 
     /* =====================================================
-        BOTONES SECUNDARIOS
+       BOTÓN CONSULTA
     ===================================================== */
+
     .btn-consulta {
-      display: block;
-      width: 100%;
-      padding: 14px;
-      border-radius: 13px;
-      background: #0f172a;
-      color: white;
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 800;
-      transition: .2s ease;
+
+      display:
+        block;
+
+      width:
+        100%;
+
+      padding:
+        14px;
+
+      border-radius:
+        13px;
+
+      background:
+        #0f172a;
+
+      color:
+        white;
+
+      text-decoration:
+        none;
+
+      font-size:
+        13px;
+
+      font-weight:
+        800;
+
+      transition:
+        .2s ease;
+
     }
+
 
     .btn-consulta:hover {
-      background: #1e293b;
-      transform: translateY(-1px);
+
+      background:
+        #1e293b;
+
+      transform:
+        translateY(-1px);
+
     }
+
+
+    /* =====================================================
+       BOTÓN NUEVO REGISTRO
+    ===================================================== */
 
     .btn-nuevo {
-      width: 100%;
-      padding: 12px;
-      margin-top: 10px;
-      border: 2px solid #cbd5e1;
-      border-radius: 13px;
-      background: white;
-      color: #334155;
-      font-family: inherit;
-      font-size: 12px;
-      font-weight: 800;
-      cursor: pointer;
-      transition: .2s ease;
+
+      width:
+        100%;
+
+      padding:
+        12px;
+
+      margin-top:
+        10px;
+
+      border:
+        2px solid
+        #cbd5e1;
+
+      border-radius:
+        13px;
+
+      background:
+        white;
+
+      color:
+        #334155;
+
+      font-family:
+        inherit;
+
+      font-size:
+        12px;
+
+      font-weight:
+        800;
+
+      cursor:
+        pointer;
+
+      transition:
+        .2s ease;
+
     }
+
 
     .btn-nuevo:hover {
-      background: #f8fafc;
+
+      background:
+        #f8fafc;
+
     }
+
+
+    /* =====================================================
+       PIE DE PÁGINA
+    ===================================================== */
 
     .footer {
-      margin-top: 20px;
-      text-align: center;
-      color: #94a3b8;
-      font-size: 10px;
-      font-weight: 600;
+
+      margin-top:
+        20px;
+
+      text-align:
+        center;
+
+      color:
+        #94a3b8;
+
+      font-size:
+        10px;
+
+      font-weight:
+        600;
+
     }
 
+
+    /* =====================================================
+       RESPONSIVE
+    ===================================================== */
+
     @media (max-width: 600px) {
+
       body {
-        padding: 15px;
-        align-items: flex-start;
+
+        padding:
+          15px;
+
+        align-items:
+          flex-start;
+
       }
+
+
       .card {
-        padding: 23px 18px;
-        border-radius: 22px;
+
+        padding:
+          22px 17px;
+
+        border-radius:
+          22px;
+
       }
+
+
       .logo {
-        max-width: 340px;
+
+        max-width:
+          340px;
+
       }
+
+
       .titulo {
-        font-size: 21px;
+
+        font-size:
+          21px;
+
       }
+
+
       .subtitulo {
-        font-size: 12px;
+
+        font-size:
+          12px;
+
       }
+
+
       .folio-code {
-        font-size: 25px;
+
+        font-size:
+          24px;
+
       }
+
     }
+
   </style>
+
 </head>
+
 
 <body>
 
+
+  <!-- =====================================================
+       TARJETA PRINCIPAL
+  ====================================================== -->
+
   <main class="card">
 
-    <div class="logo-container">
-      <img src="logo.png" alt="La Casa de los Famosos Roblox" class="logo">
-    </div>
 
-    <section id="formContainer">
-      <h1 class="titulo">Registro de Postulación</h1>
-      <p class="subtitulo">
-        ¿Tienes lo necesario para entrar a <strong>La Casa de los Famosos Roblox</strong>? Completa tu solicitud para participar.
-      </p>
+    <!-- ===================================================
+         🖼️ APARTADO DEL LOGO
+         
+         Cambia "logo.png" por el nombre de tu imagen
+         si utilizas otro archivo.
+    ==================================================== -->
 
-      <div id="mensaje" class="mensaje"></div>
+    <div class="logo-section">
 
-      <form id="postulacionForm">
-        <div class="campo">
-          <label for="roblox">🎮 USUARIO DE ROBLOX</label>
-          <input type="text" id="roblox" maxlength="30" autocomplete="off" required placeholder="Ej. RobloxPlayer123">
-        </div>
-
-        <div class="campo">
-          <label for="discord">💬 USUARIO DE DISCORD</label>
-          <input type="text" id="discord" maxlength="40" autocomplete="off" required placeholder="Ej. usuario123">
-        </div>
-
-        <div class="campo">
-          <label for="edad">🎂 EDAD</label>
-          <input type="number" id="edad" min="13" max="99" required placeholder="Ej. 16">
-        </div>
-
-        <div class="campo">
-          <label for="pais">🌎 PAÍS</label>
-          <input type="text" id="pais" maxlength="40" required placeholder="Ej. México">
-        </div>
-
-        <div class="campo">
-          <label for="motivo">⭐ ¿POR QUÉ DEBERÍAS ENTRAR?</label>
-          <textarea id="motivo" maxlength="500" required placeholder="Cuéntanos por qué quieres formar parte de la casa..."></textarea>
-        </div>
-
-        <button type="submit" class="btn-primary" id="btnSubmit">ENVIAR POSTULACIÓN</button>
-      </form>
-
-      <div class="footer">La Casa de los Famosos Roblox</div>
-    </section>
-
-    <!-- PANTALLA DE ÉXITO -->
-    <section id="exitoRegistro" class="hidden exito">
-      <div class="check">✓</div>
-      <h2>¡Postulación Enviada!</h2>
-      <p class="exito-texto">Tu solicitud fue enviada correctamente. Se te asignó un código de seguimiento.</p>
-
-      <div class="folio-result-box">
-        <div class="folio-label">TU CÓDIGO DE SEGUIMIENTO</div>
-        <div id="folioGenerado" class="folio-code">LCDF-0000</div>
+      <div class="logo-title">
+        LA CASA DE LOS FAMOSOS ROBLOX
       </div>
 
-      <p class="exito-texto">Guarda este código. Lo necesitarás para consultar el estado de tu postulación.</p>
+      <div class="logo-box">
 
-      <a href="consulta.html" class="btn-consulta">🔎 CONSULTAR ESTADO</a>
-      <button type="button" class="btn-nuevo" id="btnNuevo">HACER OTRA POSTULACIÓN</button>
+        <img
+          src="logo.png"
+          alt="Logo La Casa de los Famosos Roblox"
+          class="logo"
+        >
+
+      </div>
+
+    </div>
+
+
+    <!-- ===================================================
+         FORMULARIO
+    ==================================================== -->
+
+    <section id="formContainer">
+
+
+      <h1 class="titulo">
+        Registro de Postulación
+      </h1>
+
+
+      <p class="subtitulo">
+
+        ¿Tienes lo necesario para entrar a
+        <strong>
+          La Casa de los Famosos Roblox
+        </strong>?
+
+        Completa tu solicitud para participar.
+
+      </p>
+
+
+      <!-- MENSAJE -->
+
+      <div
+        id="mensaje"
+        class="mensaje"
+      ></div>
+
+
+      <!-- FORMULARIO -->
+
+      <form
+        id="postulacionForm"
+      >
+
+
+        <!-- ROBLOX -->
+
+        <div class="campo">
+
+          <label for="roblox">
+            🎮 USUARIO DE ROBLOX
+          </label>
+
+          <input
+            type="text"
+            id="roblox"
+            maxlength="30"
+            autocomplete="off"
+            required
+            placeholder="Ej. RobloxPlayer123"
+          >
+
+        </div>
+
+
+        <!-- DISCORD -->
+
+        <div class="campo">
+
+          <label for="discord">
+            💬 USUARIO DE DISCORD
+          </label>
+
+          <input
+            type="text"
+            id="discord"
+            maxlength="40"
+            autocomplete="off"
+            required
+            placeholder="Ej. usuario123"
+          >
+
+        </div>
+
+
+        <!-- EDAD -->
+
+        <div class="campo">
+
+          <label for="edad">
+            🎂 EDAD
+          </label>
+
+          <input
+            type="number"
+            id="edad"
+            min="13"
+            max="99"
+            required
+            placeholder="Ej. 16"
+          >
+
+        </div>
+
+
+        <!-- PAÍS -->
+
+        <div class="campo">
+
+          <label for="pais">
+            🌎 PAÍS
+          </label>
+
+          <input
+            type="text"
+            id="pais"
+            maxlength="40"
+            required
+            placeholder="Ej. México"
+          >
+
+        </div>
+
+
+        <!-- MOTIVO -->
+
+        <div class="campo">
+
+          <label for="motivo">
+            ⭐ ¿POR QUÉ DEBERÍAS ENTRAR?
+          </label>
+
+          <textarea
+            id="motivo"
+            maxlength="500"
+            required
+            placeholder="Cuéntanos por qué quieres formar parte de la casa..."
+          ></textarea>
+
+          <div
+            class="contador"
+            id="contador"
+          >
+            0 / 500
+          </div>
+
+        </div>
+
+
+        <!-- BOTÓN -->
+
+        <button
+          type="submit"
+          class="btn-primary"
+          id="btnSubmit"
+        >
+
+          ENVIAR POSTULACIÓN
+
+        </button>
+
+
+      </form>
+
+
+      <div class="footer">
+
+        La Casa de los Famosos Roblox
+
+      </div>
+
+
     </section>
+
+
+    <!-- ===================================================
+         PANTALLA DE ÉXITO
+    ==================================================== -->
+
+    <section
+      id="exitoRegistro"
+      class="hidden exito"
+    >
+
+
+      <div class="check">
+        ✓
+      </div>
+
+
+      <h2>
+        ¡Postulación Enviada!
+      </h2>
+
+
+      <p class="exito-texto">
+
+        Tu solicitud fue enviada correctamente.
+        Se te asignó un folio único de seguimiento.
+
+      </p>
+
+
+      <!-- FOLIO -->
+
+      <div class="folio-result-box">
+
+
+        <div class="folio-label">
+
+          TU FOLIO DE POSTULACIÓN
+
+        </div>
+
+
+        <div
+          id="folioGenerado"
+          class="folio-code"
+        >
+
+          LCDF-00000000
+
+        </div>
+
+
+      </div>
+
+
+      <p class="exito-texto">
+
+        Guarda este folio.
+        Lo necesitarás para consultar el estado
+        de tu postulación.
+
+      </p>
+
+
+      <!-- CONSULTAR -->
+
+      <a
+        href="consulta.html"
+        class="btn-consulta"
+      >
+
+        🔎 CONSULTAR ESTADO
+
+      </a>
+
+
+      <!-- NUEVA POSTULACIÓN -->
+
+      <button
+        type="button"
+        class="btn-nuevo"
+        id="btnNuevo"
+      >
+
+        HACER OTRA POSTULACIÓN
+
+      </button>
+
+
+    </section>
+
 
   </main>
 
-  <script>
-    const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbySGTYGtGeRK7GN4SJJbGLPco_8XxuOxhrnRKzeNWYBXG07TIWtqnsTRHPrqBy-LzXg1Q/exec";
 
-    const form = document.getElementById("postulacionForm");
-    const btnSubmit = document.getElementById("btnSubmit");
-    const mensaje = document.getElementById("mensaje");
-    const formContainer = document.getElementById("formContainer");
-    const exitoRegistro = document.getElementById("exitoRegistro");
-    const folioGenerado = document.getElementById("folioGenerado");
-    const btnNuevo = document.getElementById("btnNuevo");
+
+  <!-- =====================================================
+       JAVASCRIPT
+  ====================================================== -->
+
+  <script>
+
+
+    /* =====================================================
+       ⚙️ CONFIGURACIÓN
+       
+       PEGA AQUÍ TU URL DE GOOGLE APPS SCRIPT.
+
+       Ejemplo:
+
+       const APPS_SCRIPT_URL =
+       "https://script.google.com/macros/s/TU_ID/exec";
+
+    ===================================================== */
+
+    const APPS_SCRIPT_URL = "";
+
+
+
+    /* =====================================================
+       ELEMENTOS
+    ===================================================== */
+
+    const form =
+      document.getElementById(
+        "postulacionForm"
+      );
+
+
+    const btnSubmit =
+      document.getElementById(
+        "btnSubmit"
+      );
+
+
+    const mensaje =
+      document.getElementById(
+        "mensaje"
+      );
+
+
+    const formContainer =
+      document.getElementById(
+        "formContainer"
+      );
+
+
+    const exitoRegistro =
+      document.getElementById(
+        "exitoRegistro"
+      );
+
+
+    const folioGenerado =
+      document.getElementById(
+        "folioGenerado"
+      );
+
+
+    const btnNuevo =
+      document.getElementById(
+        "btnNuevo"
+      );
+
+
+    const motivo =
+      document.getElementById(
+        "motivo"
+      );
+
+
+    const contador =
+      document.getElementById(
+        "contador"
+      );
+
+
+
+    /* =====================================================
+       CONTADOR DEL MOTIVO
+    ===================================================== */
+
+    motivo.addEventListener(
+      "input",
+      function() {
+
+        contador.textContent =
+          `${motivo.value.length} / 500`;
+
+      }
+    );
+
+
+
+    /* =====================================================
+       🎫 GENERAR FOLIO
+       
+       Ejemplo:
+
+       LCDF-20260815-225512-A7K4
+    ===================================================== */
 
     function generarFolio() {
-      const fecha = new Date();
-      const año = fecha.getFullYear();
-      const mes = String(fecha.getMonth() + 1).padStart(2, "0");
-      const dia = String(fecha.getDate()).padStart(2, "0");
-      const hora = String(fecha.getHours()).padStart(2, "0");
-      const minutos = String(fecha.getMinutes()).padStart(2, "0");
-      const segundos = String(fecha.getSeconds()).padStart(2, "0");
-      const caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+
+      const fecha =
+        new Date();
+
+
+      const año =
+        fecha.getFullYear();
+
+
+      const mes =
+        String(
+          fecha.getMonth() + 1
+        ).padStart(2, "0");
+
+
+      const dia =
+        String(
+          fecha.getDate()
+        ).padStart(2, "0");
+
+
+      const hora =
+        String(
+          fecha.getHours()
+        ).padStart(2, "0");
+
+
+      const minutos =
+        String(
+          fecha.getMinutes()
+        ).padStart(2, "0");
+
+
+      const segundos =
+        String(
+          fecha.getSeconds()
+        ).padStart(2, "0");
+
+
+      const caracteres =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+
       let aleatorio = "";
-      for (let i = 0; i < 4; i++) {
-        aleatorio += caracteres[Math.floor(Math.random() * caracteres.length)];
+
+
+      for (
+        let i = 0;
+        i < 4;
+        i++
+      ) {
+
+        aleatorio +=
+          caracteres[
+            Math.floor(
+              Math.random()
+              *
+              caracteres.length
+            )
+          ];
+
       }
-      return `LCDF-${año}${mes}${dia}-${hora}${minutos}${segundos}-${aleatorio}`;
+
+
+      return (
+
+        `LCDF-${año}${mes}${dia}-` +
+        `${hora}${minutos}${segundos}-` +
+        `${aleatorio}`
+
+      );
+
     }
 
-    function mostrarError(texto) {
-      mensaje.textContent = texto;
-      mensaje.className = "mensaje error";
+
+
+    /* =====================================================
+       MENSAJE DE ERROR
+    ===================================================== */
+
+    function mostrarError(
+      texto
+    ) {
+
+      mensaje.textContent =
+        texto;
+
+      mensaje.className =
+        "mensaje error";
+
     }
+
+
+
+    /* =====================================================
+       LIMPIAR MENSAJE
+    ===================================================== */
 
     function limpiarMensaje() {
-      mensaje.textContent = "";
-      mensaje.className = "mensaje";
+
+      mensaje.textContent =
+        "";
+
+      mensaje.className =
+        "mensaje";
+
     }
+
+
+
+    /* =====================================================
+       VALIDAR FORMULARIO
+    ===================================================== */
 
     function validarFormulario() {
-      const roblox = document.getElementById("roblox").value.trim();
-      const discord = document.getElementById("discord").value.trim();
-      const edad = Number(document.getElementById("edad").value);
-      const pais = document.getElementById("pais").value.trim();
-      const motivo = document.getElementById("motivo").value.trim();
 
-      if (!roblox) { mostrarError("Escribe tu usuario de Roblox."); return false; }
-      if (!discord) { mostrarError("Escribe tu usuario de Discord."); return false; }
-      if (!edad || edad < 13 || edad > 99) { mostrarError("La edad debe estar entre 13 y 99 años."); return false; }
-      if (!pais) { mostrarError("Escribe tu país."); return false; }
-      if (motivo.length < 15) { mostrarError("Escribe una respuesta de al menos 15 caracteres."); return false; }
+
+      const roblox =
+        document
+          .getElementById("roblox")
+          .value
+          .trim();
+
+
+      const discord =
+        document
+          .getElementById("discord")
+          .value
+          .trim();
+
+
+      const edad =
+        Number(
+          document
+            .getElementById("edad")
+            .value
+        );
+
+
+      const pais =
+        document
+          .getElementById("pais")
+          .value
+          .trim();
+
+
+      const textoMotivo =
+        motivo.value.trim();
+
+
+
+      if (!roblox) {
+
+        mostrarError(
+          "Escribe tu usuario de Roblox."
+        );
+
+        return false;
+
+      }
+
+
+
+      if (!discord) {
+
+        mostrarError(
+          "Escribe tu usuario de Discord."
+        );
+
+        return false;
+
+      }
+
+
+
+      if (
+        !edad ||
+        edad < 13 ||
+        edad > 99
+      ) {
+
+        mostrarError(
+          "La edad debe estar entre 13 y 99 años."
+        );
+
+        return false;
+
+      }
+
+
+
+      if (!pais) {
+
+        mostrarError(
+          "Escribe tu país."
+        );
+
+        return false;
+
+      }
+
+
+
+      if (
+        textoMotivo.length < 15
+      ) {
+
+        mostrarError(
+          "Escribe al menos 15 caracteres explicando por qué deberías entrar."
+        );
+
+        return false;
+
+      }
+
+
+
       return true;
+
     }
 
-    form.addEventListener("submit", async function(e) {
-      e.preventDefault();
-      limpiarMensaje();
 
-      if (!validarFormulario()) return;
 
-      btnSubmit.disabled = true;
-      btnSubmit.textContent = "ENVIANDO...";
+    /* =====================================================
+       📤 ENVÍO DE POSTULACIÓN
+    ===================================================== */
 
-      const folio = generarFolio();
-      const payload = {
-        action: "registro",
-        folio: folio,
-        roblox: document.getElementById("roblox").value.trim(),
-        discord: document.getElementById("discord").value.trim(),
-        edad: document.getElementById("edad").value,
-        pais: document.getElementById("pais").value.trim(),
-        motivo: document.getElementById("motivo").value.trim()
-      };
+    form.addEventListener(
+      "submit",
+      async function(e) {
 
-      try {
-        await fetch(APPS_SCRIPT_URL, {
-          method: "POST",
-          body: JSON.stringify(payload),
-          mode: "no-cors"
+
+        e.preventDefault();
+
+
+        limpiarMensaje();
+
+
+
+        /* ================================================
+           COMPROBAR URL DE APPS SCRIPT
+        ================================================= */
+
+        if (
+          !APPS_SCRIPT_URL.trim()
+        ) {
+
+          mostrarError(
+            "El administrador todavía no ha configurado la URL de Google Apps Script."
+          );
+
+          return;
+
+        }
+
+
+
+        /* ================================================
+           VALIDAR
+        ================================================= */
+
+        if (
+          !validarFormulario()
+        ) {
+
+          return;
+
+        }
+
+
+
+        /* ================================================
+           BLOQUEAR BOTÓN
+        ================================================= */
+
+        btnSubmit.disabled =
+          true;
+
+        btnSubmit.textContent =
+          "ENVIANDO POSTULACIÓN...";
+
+
+
+        /* ================================================
+           GENERAR FOLIO
+        ================================================= */
+
+        const folio =
+          generarFolio();
+
+
+
+        /* ================================================
+           CREAR DATOS
+        ================================================= */
+
+        const payload = {
+
+          action:
+            "registro",
+
+          folio:
+            folio,
+
+          roblox:
+            document
+              .getElementById("roblox")
+              .value
+              .trim(),
+
+          discord:
+            document
+              .getElementById("discord")
+              .value
+              .trim(),
+
+          edad:
+            document
+              .getElementById("edad")
+              .value,
+
+          pais:
+            document
+              .getElementById("pais")
+              .value
+              .trim(),
+
+          motivo:
+            motivo
+              .value
+              .trim()
+
+        };
+
+
+
+        /* ================================================
+           ENVIAR
+        ================================================= */
+
+        try {
+
+
+          await fetch(
+            APPS_SCRIPT_URL,
+            {
+
+              method:
+                "POST",
+
+              body:
+                JSON.stringify(
+                  payload
+                ),
+
+              mode:
+                "no-cors"
+
+            }
+          );
+
+
+
+          /* ==============================================
+             GUARDAR FOLIO
+          ============================================== */
+
+          localStorage.setItem(
+            "ultimoFolioLCDF",
+            folio
+          );
+
+
+
+          /* ==============================================
+             MOSTRAR FOLIO
+          ============================================== */
+
+          folioGenerado.textContent =
+            folio;
+
+
+
+          /* ==============================================
+             CAMBIAR A PANTALLA DE ÉXITO
+          ============================================== */
+
+          formContainer
+            .classList
+            .add("hidden");
+
+
+          exitoRegistro
+            .classList
+            .remove("hidden");
+
+
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+          });
+
+
+        }
+
+
+        catch (error) {
+
+
+          console.error(
+            "Error:",
+            error
+          );
+
+
+          mostrarError(
+            "No se pudo enviar la postulación. Intenta nuevamente."
+          );
+
+
+          btnSubmit.disabled =
+            false;
+
+
+          btnSubmit.textContent =
+            "ENVIAR POSTULACIÓN";
+
+        }
+
+      }
+    );
+
+
+
+    /* =====================================================
+       📝 NUEVA POSTULACIÓN
+    ===================================================== */
+
+    btnNuevo.addEventListener(
+      "click",
+      function() {
+
+
+        form.reset();
+
+
+        limpiarMensaje();
+
+
+        contador.textContent =
+          "0 / 500";
+
+
+        exitoRegistro
+          .classList
+          .add("hidden");
+
+
+        formContainer
+          .classList
+          .remove("hidden");
+
+
+        btnSubmit.disabled =
+          false;
+
+
+        btnSubmit.textContent =
+          "ENVIAR POSTULACIÓN";
+
+
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
         });
 
-        localStorage.setItem("ultimoFolioLCDF", folio);
-        folioGenerado.textContent = folio;
-        formContainer.classList.add("hidden");
-        exitoRegistro.classList.remove("hidden");
 
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      } catch (error) {
-        console.error("Error:", error);
-        mostrarError("No se pudo enviar la postulación. Intenta nuevamente.");
-        btnSubmit.disabled = false;
-        btnSubmit.textContent = "ENVIAR POSTULACIÓN";
       }
-    });
+    );
 
-    btnNuevo.addEventListener("click", function() {
-      form.reset();
-      limpiarMensaje();
-      exitoRegistro.classList.add("hidden");
-      formContainer.classList.remove("hidden");
-      btnSubmit.disabled = false;
-      btnSubmit.textContent = "ENVIAR POSTULACIÓN";
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    });
+
   </script>
+
 
 </body>
 </html>
