@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La Casa de los Famosos Roblox - Registro</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at 20% 20%, #e0c3fc 0%, #8ec5fc 40%, #fbc2eb 70%, #a1c4fd 100%);
+      background-attachment: fixed;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      color: #1e293b;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 2px solid rgba(255, 255, 255, 0.9);
+      border-radius: 24px;
+      max-width: 520px;
+      width: 100%;
+      padding: 28px;
+      box-shadow: 0 20px 40px rgba(37, 99, 235, 0.15), 0 10px 25px rgba(147, 51, 234, 0.1);
+    }
+
+    .logo-container {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .logo-img {
+      width: 100%;
+      max-width: 240px;
+      height: auto;
+      filter: drop-shadow(0 8px 16px rgba(37, 99, 235, 0.3));
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .nav-link {
+      flex: 1;
+      text-align: center;
+      padding: 10px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 12px;
+      text-transform: uppercase;
+      transition: all 0.2s ease;
+    }
+
+    .nav-link.active {
+      background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 50%, #3b82f6 100%);
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+    }
+
+    .nav-link.inactive {
+      background: rgba(255, 255, 255, 0.6);
+      color: #475569;
+      border: 1px solid rgba(255, 255, 255, 0.8);
+    }
+
+    .nav-link.inactive:hover {
+      background: rgba(255, 255, 255, 0.9);
+      color: #1e40af;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    label {
+      display: block;
+      font-size: 12px;
+      font-weight: 800;
+      color: #1e40af;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px 16px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 2px solid #cbd5e1;
+      border-radius: 12px;
+      color: #0f172a;
+      font-size: 14px;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #2563eb;
+      background: #ffffff;
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .btn-primary {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #1e40af 0%, #2563eb 50%, #3b82f6 100%);
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 15px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      text-transform: uppercase;
+      margin-top: 8px;
+      box-shadow: 0 6px 18px rgba(37, 99, 235, 0.35);
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(37, 99, 235, 0.45);
+    }
+
+    .btn-primary:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .folio-result-box {
+      background: rgba(255, 255, 255, 0.9);
+      border: 2px dashed #2563eb;
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .folio-code {
+      font-size: 28px;
+      font-weight: 900;
+      color: #1e40af;
+      letter-spacing: 2px;
+      font-family: monospace;
+      margin-top: 6px;
+    }
+
+    .info-note {
+      background: rgba(219, 234, 254, 0.7);
+      border: 1px solid #bfdbfe;
+      border-radius: 10px;
+      padding: 12px;
+      font-size: 12px;
+      color: #1e3a8a;
+      margin-top: 14px;
+      line-height: 1.4;
+    }
+
+    .btn-secondary {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 12px;
+      background: #ffffff;
+      color: #1e40af;
+      border: 2px solid #93c5fd;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 13px;
+      text-transform: uppercase;
+      text-decoration: none;
+      margin-top: 12px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-secondary:hover {
+      background: #f0f9ff;
+      border-color: #2563eb;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="logo-container">
+      <a href="index.html">
+        <img src="logo.png" alt="La Casa de los Famosos Roblox" class="logo-img">
+      </a>
+    </div>
+
+    <!-- Menú Superior de Navegación -->
+    <div class="nav-buttons">
+      <a href="index.html" class="nav-link inactive">🏠 Inicio</a>
+      <a href="registro.html" class="nav-link active">📝 Registro</a>
+      <a href="consulta.html" class="nav-link inactive">🔍 Consulta</a>
+    </div>
+
+    <!-- Formulario de Registro -->
+    <form id="postulacionForm">
+      <div class="form-group">
+        <label for="roblox">Usuario de Roblox *</label>
+        <input type="text" id="roblox" required placeholder="Ej: UserRoblox123">
+      </div>
+
+      <div class="form-group">
+        <label for="discord">Usuario de Discord *</label>
+        <input type="text" id="discord" required placeholder="Ej: usuario_discord">
+      </div>
+
+      <div class="form-group">
+        <label for="edad">Edad *</label>
+        <input type="number" id="edad" min="10" max="99" required placeholder="Ej: 16">
+      </div>
+
+      <div class="form-group">
+        <label for="pais">País / Zona Horaria *</label>
+        <input type="text" id="pais" required placeholder="Ej: México (GMT-6)">
+      </div>
+
+      <div class="form-group">
+        <label for="motivo">¿Por qué deberías entrar? *</label>
+        <textarea id="motivo" required placeholder="Cuéntanos tu estrategia o personalidad..."></textarea>
+      </div>
+
+      <button type="submit" class="btn-primary" id="btnSubmit">Enviar Postulación</button>
+    </form>
+
+    <!-- Pantalla de Confirmación de Registro -->
+    <div id="exitoRegistro" class="hidden">
+      <h3 style="color: #1e40af; text-align: center; font-size: 20px;">¡Postulación Guardada!</h3>
+      <p style="text-align: center; font-size: 13px; color: #475569; margin-top: 4px;">Guarda este código para consultar tus resultados:</p>
+      
+      <div class="folio-result-box">
+        <span style="font-size: 11px; text-transform: uppercase; color: #64748b; font-weight: 700;">Tu Folio Único</span>
+        <div class="folio-code" id="folioGenerado">LCDF-0000</div>
+      </div>
+
+      <div class="info-note">
+        📌 <strong>Importante:</strong> Toma una captura de pantalla o guarda tu folio. Puedes revisar si fuiste aceptado en la sección de <strong>Consulta</strong>.
+      </div>
+
+      <a href="consulta.html" class="btn-secondary">Ir a Consultar Estado</a>
+      <a href="index.html" class="btn-secondary" style="border: none; background: transparent; color: #64748b;">Volver al Menú Principal</a>
+    </div>
+  </div>
+
+  <script>
+    // Reemplaza esta URL con la URL de tu Web App desplegada en Google Apps Script
+    const APPS_SCRIPT_URL = "https://script.google.com/macros/s/TU_SCRIPT_ID_AQUI/exec";
+
+    document.getElementById('postulacionForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = document.getElementById('btnSubmit');
+      btn.innerText = "PROCESANDO...";
+      btn.disabled = true;
+
+      // Generación de un folio aleatorio único
+      const numAleatorio = Math.floor(1000 + Math.random() * 9000);
+      const folio = `LCDF-2026-${numAleatorio}`;
+
+      const payload = {
+        action: "registro",
+        roblox: document.getElementById('roblox').value.trim(),
+        discord: document.getElementById('discord').value.trim(),
+        edad: document.getElementById('edad').value.trim(),
+        pais: document.getElementById('pais').value.trim(),
+        motivo: document.getElementById('motivo').value.trim(),
+        folio: folio
+      };
+
+      try {
+        await fetch(APPS_SCRIPT_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+
+        document.getElementById('postulacionForm').classList.add('hidden');
+        document.getElementById('folioGenerado').innerText = folio;
+        document.getElementById('exitoRegistro').classList.remove('hidden');
+
+      } catch (err) {
+        alert("Error al conectar con el servidor. Intenta nuevamente.");
+        btn.innerText = "Enviar Postulación";
+        btn.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
