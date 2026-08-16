@@ -102,10 +102,8 @@
       border: 2px solid #cbd5e1;
       border-radius: 12px;
       color: #0f172a;
-      font-size: 15px;
-      font-weight: 600;
+      font-size: 14px;
       outline: none;
-      text-transform: uppercase;
       transition: all 0.2s ease;
     }
 
@@ -142,71 +140,32 @@
       transform: none;
     }
 
+    .resultado-box {
+      background: rgba(255, 255, 255, 0.9);
+      border: 2px solid #2563eb;
+      border-radius: 16px;
+      padding: 20px;
+      margin-top: 20px;
+      text-align: center;
+    }
+
     .hidden {
       display: none;
     }
 
-    .result-box {
-      background: rgba(255, 255, 255, 0.95);
-      border: 2px solid #cbd5e1;
-      border-radius: 18px;
-      padding: 20px;
-      margin-top: 20px;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-    }
-
-    .result-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 0;
-      border-bottom: 1px solid #e2e8f0;
-    }
-
-    .result-item:last-child {
-      border-bottom: none;
-    }
-
-    .result-label {
-      font-size: 12px;
-      font-weight: 700;
-      color: #64748b;
-      text-transform: uppercase;
-    }
-
-    .result-value {
-      font-size: 14px;
-      font-weight: 800;
-      color: #0f172a;
-    }
-
-    .status-badge {
+    .estado-badge {
       display: inline-block;
       padding: 6px 14px;
       border-radius: 20px;
-      font-size: 12px;
-      font-weight: 900;
+      font-weight: 800;
+      font-size: 13px;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      margin-top: 10px;
     }
 
-    .status-pendiente {
-      background: #fef3c7;
-      color: #d97706;
-      border: 1px solid #fde68a;
-    }
-
-    .status-aceptado {
-      background: #dcfce7;
-      color: #15803d;
-      border: 1px solid #bbf7d0;
-    }
-
-    .status-rechazado {
-      background: #fee2e2;
-      color: #b91c1c;
-      border: 1px solid #fecaca;
-    }
+    .estado-aceptado { background: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
+    .estado-rechazado { background: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
+    .estado-pendiente { background: #fef9c3; color: #854d0e; border: 1px solid #fef08a; }
 
     .btn-secondary {
       display: block;
@@ -229,18 +188,6 @@
       background: #f0f9ff;
       border-color: #2563eb;
     }
-
-    .error-box {
-      background: #fef2f2;
-      border: 1px solid #fecaca;
-      border-radius: 12px;
-      padding: 14px;
-      color: #991b1b;
-      font-size: 13px;
-      font-weight: 700;
-      text-align: center;
-      margin-top: 16px;
-    }
   </style>
 </head>
 <body>
@@ -262,42 +209,21 @@
     <!-- Formulario de Consulta -->
     <form id="consultaForm">
       <div class="form-group">
-        <label for="folioInput">Ingresa tu Folio *</label>
+        <label for="folioInput">Ingresa tu Folio Único *</label>
         <input type="text" id="folioInput" required placeholder="Ej: LCDF-2026-1234">
       </div>
 
-      <button type="submit" class="btn-primary" id="btnBuscar">Buscar Estado</button>
+      <button type="submit" class="btn-primary" id="btnConsultar">Consultar Estado</button>
     </form>
 
-    <!-- Caja de Mensaje de Error (Si no encuentra el folio) -->
-    <div id="errorBox" class="error-box hidden">
-      ❌ Folio no encontrado. Revisa que lo hayas escrito correctamente.
-    </div>
-
     <!-- Resultado de la Consulta -->
-    <div id="resultadoConsulta" class="result-box hidden">
-      <div class="result-item">
-        <span class="result-label">Folio:</span>
-        <span class="result-value" id="resFolio">LCDF-0000</span>
-      </div>
-
-      <div class="result-item">
-        <span class="result-label">Roblox:</span>
-        <span class="result-value" id="resRoblox">--</span>
-      </div>
-
-      <div class="result-item">
-        <span class="result-label">Discord:</span>
-        <span class="result-value" id="resDiscord">--</span>
-      </div>
-
-      <div class="result-item">
-        <span class="result-label">Estado:</span>
-        <span id="resEstatus" class="status-badge status-pendiente">Pendiente</span>
-      </div>
-
-      <a href="consulta.html" class="btn-secondary" onclick="location.reload();">Consultar otro folio</a>
+    <div id="resultadoConsulta" class="resultado-box hidden">
+      <h3 style="color: #1e40af; font-size: 18px; margin-bottom: 6px;">Resultado de Postulación</h3>
+      <p id="infoRoblox" style="font-size: 14px; color: #475569; font-weight: 600;"></p>
+      <div id="badgeEstado" class="estado-badge">PENDIENTE</div>
     </div>
+
+    <a href="index.html" class="btn-secondary" style="border: none; background: transparent; color: #64748b;">Volver al Menú Principal</a>
   </div>
 
   <script>
@@ -305,50 +231,61 @@
 
     document.getElementById('consultaForm').addEventListener('submit', async function(e) {
       e.preventDefault();
-      const folioQuery = document.getElementById('folioInput').value.trim().toUpperCase();
-      const btn = document.getElementById('btnBuscar');
-      const errorBox = document.getElementById('errorBox');
-      const resultadoBox = document.getElementById('resultadoConsulta');
-
+      const btn = document.getElementById('btnConsultar');
+      const folio = document.getElementById('folioInput').value.trim();
+      
       btn.innerText = "BUSCANDO...";
       btn.disabled = true;
-      errorBox.classList.add('hidden');
-      resultadoBox.classList.add('hidden');
+
+      const payload = {
+        action: "consulta",
+        folio: folio
+      };
 
       try {
-        const response = await fetch(`${APPS_SCRIPT_URL}?action=consulta&folio=${encodeURIComponent(folioQuery)}`);
-        const data = await response.json();
+        const response = await fetch(APPS_SCRIPT_URL, {
+          method: "POST",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify(payload)
+        });
 
-        if (data.success && data.encontrado) {
-          document.getElementById('resFolio').innerText = data.data.folio;
-          document.getElementById('resRoblox').innerText = data.data.roblox;
-          document.getElementById('resDiscord').innerText = data.data.discord;
+        const result = await response.json();
+        const resultadoDiv = document.getElementById('resultadoConsulta');
+        const badge = document.getElementById('badgeEstado');
+        const info = document.getElementById('infoRoblox');
 
-          const badgeEstatus = document.getElementById('resEstatus');
-          const estado = (data.data.estatus || 'PENDIENTE').toUpperCase();
-          badgeEstatus.innerText = estado;
+        if (result.success) {
+          info.innerText = `Roblox: ${result.roblox}`;
+          
+          badge.className = "estado-badge";
+          const estado = (result.estado || "Pendiente").toLowerCase();
 
-          // Asignar clase de color según el estado
-          badgeEstatus.className = "status-badge";
-          if (estado.includes("ACEPTAD")) {
-            badgeEstatus.classList.add("status-aceptado");
-          } else if (estado.includes("RECHAZAD")) {
-            badgeEstatus.classList.add("status-rechazado");
+          if (estado.includes("aceptado")) {
+            badge.classList.add("estado-aceptado");
+            badge.innerText = "¡ACEPTADO!";
+          } else if (estado.includes("rechazado")) {
+            badge.classList.add("estado-rechazado");
+            badge.innerText = "NO SELECCIONADO";
           } else {
-            badgeEstatus.classList.add("status-pendiente");
+            badge.classList.add("estado-pendiente");
+            badge.innerText = "EN REVISIÓN / PENDIENTE";
           }
 
-          resultadoBox.classList.remove('hidden');
+          resultadoDiv.classList.remove('hidden');
         } else {
-          errorBox.classList.remove('hidden');
+          alert(result.error || "No se encontró ningún registro con ese folio.");
+          resultadoDiv.classList.add('hidden');
         }
+
       } catch (err) {
-        alert("Error al conectar con el servidor de búsqueda.");
+        console.error(err);
+        alert("Error al conectar con el servidor. Intenta nuevamente.");
       } finally {
-        btn.innerText = "Buscar Estado";
+        btn.innerText = "Consultar Estado";
         btn.disabled = false;
       }
     });
   </script>
 </body>
 </html>
+           
